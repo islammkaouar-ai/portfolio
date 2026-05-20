@@ -235,6 +235,17 @@
       padding: 16px;
     }
 
+    .profile-photo {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(24, 30, 40, 0.12);
+      margin-bottom: 12px;
+    }
+
     .hero-panel h3 {
       margin: 0 0 10px;
       font-size: 0.9rem;
@@ -717,6 +728,15 @@
       background: #fff;
     }
 
+    .site-preview-img {
+      width: 100%;
+      height: 100%;
+      min-height: 270px;
+      object-fit: cover;
+      display: block;
+      border: 0;
+    }
+
     .site-preview-caption {
       margin: 0;
       padding: 11px 14px 14px;
@@ -824,6 +844,7 @@
         </div>
 
         <aside class="hero-panel">
+          <img class="profile-photo" src="assets/media/profile-islam.jpg" alt="Portrait of Islam Mkaouar" />
           <h3 data-i18n="heroPanelTitle">Why clients choose me</h3>
           <div class="lang-note">
             <span>FR C2</span><span>EN C2</span><span>AR C2</span><span>DE B2</span>
@@ -960,6 +981,25 @@
 
       <div class="snippet-grid">
         <article class="snippet">
+          <h4>google-sites-lms/scripts/rebuild_optim_slides.py</h4>
+          <pre>def delete_all_slides(prs: Presentation) -> None:
+  slide_ids = list(prs.slides._sldIdLst)
+  for slide_id in slide_ids:
+    rel_id = slide_id.rId
+    prs.part.drop_rel(rel_id)
+    prs.slides._sldIdLst.remove(slide_id)</pre>
+        </article>
+
+        <article class="snippet">
+          <h4>TAN/TAR/update_portfolio.py</h4>
+          <pre>for var_name, filename in templates.items():
+  with open(f"{template_dir}\\{filename}", 'r', encoding='utf-8') as f:
+    html = f.read()
+  html_escaped = html.replace('\\', '\\\\').replace('`', '\\`')
+  js_vars += f"const TMPL_{var_name} = `{html_escaped}`;\n"</pre>
+        </article>
+
+        <article class="snippet">
           <h4>Apps Script Trigger</h4>
           <pre>function onFormSubmit(e) {
   const payload = normalizeSubmission(e);
@@ -972,14 +1012,6 @@
 }</pre>
         </article>
 
-        <article class="snippet">
-          <h4>Dashboard API Pattern</h4>
-          <pre>function getProgressDashboardData(payload) {
-  const viewer = getViewerContext(payload);
-  const scopedRows = applyVisibilityScope(viewer, payload);
-  return buildDashboardResponse(scopedRows);
-}</pre>
-        </article>
       </div>
 
       <div class="grid" style="margin-top:12px;">
@@ -1001,7 +1033,7 @@
             <h3>Accueil Google Sites</h3>
             <button type="button" data-modal="site-home">Ouvrir en grand</button>
           </div>
-          <div class="site-preview-frame" style="display:flex;align-items:center;justify-content:center;background:#f4f7fc;color:#888;font-size:13px;padding:20px;text-align:center">Screenshot to be added<br><span style="font-size:11px">ACCEUIL.html template available in workspace</span></div>
+          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-home.png" alt="Google Sites home screenshot" /></div>
           <p class="site-preview-caption">Page d'accueil de la plateforme de formation Carrefour avec le CTA Découvrir les parcours.</p>
         </article>
         <article class="site-preview-card">
@@ -1009,7 +1041,7 @@
             <h3>Catalogue des parcours</h3>
             <button type="button" data-modal="site-parcours">Ouvrir en grand</button>
           </div>
-          <div class="site-preview-frame" style="display:flex;align-items:center;justify-content:center;background:#f4f7fc;color:#888;font-size:13px;padding:20px;text-align:center">Screenshot to be added<br><span style="font-size:11px">PARCOURS.html template available in workspace</span></div>
+          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-parcours.png" alt="Parcours catalogue screenshot" /></div>
           <p class="site-preview-caption">Vue catalogue des parcours ABG, Assort'impact et Store Adaptor.</p>
         </article>
         <article class="site-preview-card">
@@ -1017,7 +1049,7 @@
             <h3>Parcours ABG</h3>
             <button type="button" data-modal="site-abg">Ouvrir en grand</button>
           </div>
-          <div class="site-preview-frame" style="display:flex;align-items:center;justify-content:center;background:#f4f7fc;color:#888;font-size:13px;padding:20px;text-align:center">Screenshot to be added<br><span style="font-size:11px">P01.html template available in workspace</span></div>
+          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-abg.png" alt="Parcours ABG screenshot" /></div>
           <p class="site-preview-caption">Parcours ABG avec le point d'entrée vers l'environnement de formation et les modules.</p>
         </article>
         <article class="site-preview-card">
@@ -1025,7 +1057,7 @@
             <h3>Parcours Assort'impact</h3>
             <button type="button" data-modal="site-assort">Ouvrir en grand</button>
           </div>
-          <div class="site-preview-frame" style="display:flex;align-items:center;justify-content:center;background:#f4f7fc;color:#888;font-size:13px;padding:20px;text-align:center">Screenshot to be added<br><span style="font-size:11px">P02.html template available in workspace</span></div>
+          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-assort.png" alt="Parcours Assort impact screenshot" /></div>
           <p class="site-preview-caption">Parcours Assort'impact avec les supports de formation et les cas d'usage business.</p>
         </article>
       </div>
@@ -1777,25 +1809,25 @@
         modalTitle.textContent = "Google Sites Home";
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Google Sites Home (Preview)", `<div class="panel"><p>Screenshot of the Google Sites home page can be added here. The template file is available in the workspace under <code>google-sites-lms/templates/ACCEUIL.html</code>.</p></div>`);
+        modalFrame.srcdoc = makeDoc("Google Sites Home (Preview)", `<div class="panel"><img src="assets/media/site-home.png" alt="Google Sites home screenshot"></div>`);
         modalNote.textContent = "";
       } else if (kind === "site-parcours") {
         modalTitle.textContent = "Parcours Catalogue";
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours Catalogue (Preview)", `<div class="panel"><p>Screenshot of the parcours catalog page can be added here. The template file is available in the workspace under <code>google-sites-lms/templates/PARCOURS.html</code>.</p></div>`);
+        modalFrame.srcdoc = makeDoc("Parcours Catalogue (Preview)", `<div class="panel"><img src="assets/media/site-parcours.png" alt="Parcours catalogue screenshot"></div>`);
         modalNote.textContent = "";
       } else if (kind === "site-abg") {
         modalTitle.textContent = "Parcours ABG";
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours ABG (Preview)", `<div class="panel"><p>Screenshot of the ABG parcours page can be added here. The template file is available in the workspace under <code>google-sites-lms/templates/P01.html</code>.</p></div>`);
+        modalFrame.srcdoc = makeDoc("Parcours ABG (Preview)", `<div class="panel"><img src="assets/media/site-abg.png" alt="Parcours ABG screenshot"></div>`);
         modalNote.textContent = "";
       } else if (kind === "site-assort") {
         modalTitle.textContent = "Parcours Assort'impact";
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours Assort'impact (Preview)", `<div class="panel"><p>Screenshot of the Assort'impact parcours page can be added here.</p></div>`);
+        modalFrame.srcdoc = makeDoc("Parcours Assort'impact (Preview)", `<div class="panel"><img src="assets/media/site-assort.png" alt="Parcours Assort impact screenshot"></div>`);
         modalNote.textContent = "";
       } else if (kind === "cupra") {
         modalTitle.textContent = "CUPRA Storytelling Deck";
