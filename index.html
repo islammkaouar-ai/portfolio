@@ -1078,9 +1078,9 @@
       <p data-i18n="contactText">Need a Google Sites workspace, an Apps Script automation, or a strategic deck? Let's build it together.</p>
       <div class="contact-row">
         <a class="contact-chip" href="mailto:imkaouer@gmail.com">imkaouer@gmail.com</a>
-        <a class="contact-chip" href="https://www.linkedin.com/in/islam-mkaouar-054a31226/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="contact-chip" href="https://wa.me/33673969660" target="_blank" rel="noopener noreferrer">WhatsApp: +33 6 73 96 96 60</a>
-        <a class="contact-chip" href="tel:+33759009633">Phone: +33 7 59 00 96 33</a>
+        <a class="contact-chip" href="https://www.linkedin.com/in/islam-mkaouar-054a31226/" target="_blank" rel="noopener noreferrer" data-i18n="contactLinkedin">LinkedIn</a>
+        <a class="contact-chip" href="https://wa.me/33673969660" target="_blank" rel="noopener noreferrer" data-i18n="contactWhatsapp">WhatsApp: +33 6 73 96 96 60</a>
+        <a class="contact-chip" href="tel:+33759009633" data-i18n="contactPhone">Phone: +33 7 59 00 96 33</a>
       </div>
     </section>
 
@@ -1176,7 +1176,10 @@
         aboutText: "I am ISLAM MKAOUAR, Tunisian and based in Paris. I combine product thinking, automation, and visual communication. I am fast, result-driven, and a very fast learner. My style is premium but human: I turn complex needs into simple systems and consistently go beyond expectations by designing not only what clients ask for, but also what they will need next.",
         contactTitle: "Ready to launch your next project?",
         contactText: "Need a Google Sites workspace, an Apps Script automation, or a strategic deck? Let's build it together.",
-        footerText: "Designed and built by ISLAM MKAOUAR - 2026"
+        footerText: "Designed and built by ISLAM MKAOUAR - 2026",
+        contactLinkedin: "LinkedIn",
+        contactWhatsapp: "WhatsApp: +33 6 73 96 96 60",
+        contactPhone: "Phone: +33 7 59 00 96 33"
       },
       fr: {
         navProjects: "Projets",
@@ -1251,7 +1254,10 @@
         aboutText: "Je suis ISLAM MKAOUAR, Tunisienne basée à Paris. Je combine product thinking, automatisation et communication visuelle. Je suis rapide, orientée résultat, et j'apprends très vite. Mon style est premium mais humain : je transforme des besoins complexes en systèmes simples, et je vais au-delà des attentes en concevant non seulement ce que les clients demandent, mais aussi ce dont ils auront besoin ensuite.",
         contactTitle: "Prêt à lancer votre prochain projet ?",
         contactText: "Besoin d'un workspace Google Sites, d'une automatisation Apps Script ou d'un deck stratégique? Construisons-le ensemble.",
-        footerText: "Designed and built by ISLAM MKAOUAR - 2026"
+        footerText: "Conçu et réalisé par ISLAM MKAOUAR - 2026",
+        contactLinkedin: "LinkedIn",
+        contactWhatsapp: "WhatsApp : +33 6 73 96 96 60",
+        contactPhone: "Téléphone : +33 7 59 00 96 33"
       }
     };
 
@@ -1303,534 +1309,195 @@
     }
 
     function openModal(kind) {
+      const lang = document.documentElement.lang === "fr" ? "fr" : "en";
+      const L = {
+        en: {
+          embeddedPdf: "Embedded local PDF from the portfolio repository.",
+          p1PreviewTitle: "Google Sites LMS (Platform Preview)",
+          p1PreviewDocTitle: "Google Sites LMS (Platform Overview)",
+          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Platform Structure</h2><p>The LMS is built as a 4-level hierarchy in Google Sites for enterprise category management training.</p><div class="grid"><div><div class="chip">Home</div><p style="font-size:13px">Entry page with platform identity and CTAs</p></div><div><div class="chip">Tracks</div><p style="font-size:13px">Catalog of learning tracks</p></div><div><div class="chip">Modules</div><p style="font-size:13px">Per-track module pages and resources</p></div><div><div class="chip">Assessments</div><p style="font-size:13px">Quizzes and adaptive missions</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Website Screenshots</h2><div class="grid"><div><img src="assets/media/site-home.png" alt="Google Sites home page"><p style="font-size:13px">Home page</p></div><div><img src="assets/media/site-parcours.png" alt="Google Sites tracks"><p style="font-size:13px">Tracks catalog</p></div><div><img src="assets/media/site-p01-abg.png" alt="Google Sites ABG page"><p style="font-size:13px">ABG page</p></div><div><img src="assets/media/site-p02-assortimpact.png" alt="Google Sites Assort impact page"><p style="font-size:13px">Assort'impact page</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2><img src="assets/media/site-p03-store-adaptor.png" alt="Google Sites Store Adaptor page"></div>`,
+          p1ExplainerTitle: "Google Sites LMS (Case Study)",
+          p1ExplainerDocTitle: "Google Sites LMS (Carrefour Learning Platform)",
+          p1ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Context</h2><p>Internal onboarding and learning content were fragmented. The objective was to centralize training in a premium self-serve LMS built only with Google Workspace tools.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Delivery</h2><ul><li>4-level information architecture (Home, Tracks, Modules, Resources)</li><li>Custom HTML/CSS templates embedded in Google Sites</li><li>Business use-case pages and practical learning flow</li><li>Reusable structure for fast rollout of future tracks</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Faster onboarding with clear learning navigation</li><li>No external stack required</li><li>Scalable and maintainable template system</li></ul></div>`,
+          p2PreviewTitle: "Apps Script (Architecture)",
+          p2PreviewDocTitle: "Apps Script Certification System (Architecture)",
+          p2PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">End-to-End Flow</h2><p>Google Form submit -> onFormSubmit(e) -> attempt logging -> module/parcours progress update -> certificate eligibility check -> PDF generation -> Drive storage -> Gmail delivery.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Data Architecture</h2><div class="grid"><div><div class="chip">QUIZ_ATTEMPTS</div><p style="font-size:13px">All submissions with score and timestamp</p></div><div><div class="chip">MODULE_PROGRESS</div><p style="font-size:13px">Best score and completion status per module</p></div><div><div class="chip">PARCOURS_PROGRESS</div><p style="font-size:13px">Rolled-up track completion per learner</p></div><div><div class="chip">CERTIFICATES_LOG</div><p style="font-size:13px">Issued certificate history for auditability</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Certificate Output</h2><img src="assets/media/certificate-example.png" alt="Certificate example"></div>`,
+          p2ExplainerTitle: "Apps Script (Full Workflow)",
+          p2ExplainerDocTitle: "Apps Script Certification and Progress System",
+          p2ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Problem</h2><p>Progress tracking and certificate issuance were manual and time-consuming.</p><p><strong>Goal:</strong> fully automate the lifecycle from quiz submission to learner delivery.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Build Logic</h2><ol><li>Normalize form events into structured payloads</li><li>Append quiz attempts for complete history</li><li>Upsert module and parcours progress</li><li>Trigger certificate generation when eligibility is reached</li><li>Store PDF in Drive and send it by email</li></ol></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Zero manual operations from quiz to certificate</li><li>Real-time progress visibility</li><li>Scalable process for large learner cohorts</li></ul></div>`,
+          p3PreviewTitle: "Adaptive Assessment (Mission Preview)",
+          p3PreviewDocTitle: "Fil Rouge Mission (Sample Flow)",
+          p3PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Mission Concept</h2><p>Scenario-based assessments where each learner makes contextual business decisions instead of answering static quiz questions.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Adaptive Inputs</h2><ul><li><strong>Role:</strong> Operational, Strategic, or Data-Driven</li><li><strong>Scope:</strong> Local, Regional, or National</li></ul><p>These choices dynamically modify options, consequences, and feedback.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Mission Flow</h2><ol><li>Situation brief</li><li>Decision point 1</li><li>Consequences and new context</li><li>Decision point 2</li><li>Contextual debrief</li></ol></div>`,
+          p3PreviewNote: "Mission content shown here is sanitized and contains no sensitive data.",
+          p3ExplainerTitle: "Fil Rouge Missions (Build Approach)",
+          p3ExplainerDocTitle: "Fil Rouge Adaptive Assessment",
+          p3ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Why It Matters</h2><p>Traditional quizzes evaluate memory, while category management requires contextual judgment and trade-off decisions.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Design Principles</h2><ul><li>Persona-based entry and scoring</li><li>Perimeter-based scenario data</li><li>Branching consequences over multiple decisions</li><li>Contextual feedback instead of binary right/wrong</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Integration</h2><p>Fil Rouge missions plug into the same Apps Script pipeline for progress tracking and certificate eligibility.</p></div>`,
+          p4PreviewTitle: "CUPRA Storytelling Deck",
+          p4ExplainerTitle: "CUPRA Deck (How It Was Made)",
+          p4ExplainerDocTitle: "CUPRA Storytelling Deck",
+          p4ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Context</h2><p>Solo strategic marketing deck created for an academic project with executive-level narrative structure.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Method</h2><ol><li>Market and competitor research</li><li>Decision-oriented narrative arc</li><li>Brand-aligned visual system</li><li>Iterative refinement before final delivery</li></ol></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Outcome</h2><p>A consulting-style deck focused on positioning, strategic options, and actionable recommendations.</p></div>`,
+          p5PreviewTitle: "Finance Deck Preview",
+          p5ExplainerTitle: "Business Presentations (Gallery)",
+          p5ExplainerDocTitle: "Finance Deck and Presentation Gallery",
+          p5ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Finance Deck</h2><p>Business-school deck focused on valuation logic, ratio analysis, and investment thesis communication.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Other Presentations</h2><p>Additional decks combine structured business analysis, clear visual storytelling, and action-oriented conclusions.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Design Standard</h2><ul><li>High signal, low clutter</li><li>Data visuals with clear narrative purpose</li><li>Executive summary orientation</li></ul></div>`,
+          p6PreviewTitle: "AG Phone (Business Card - Both Sides)",
+          p6PreviewDocTitle: "AG Phone Business Card",
+          p6PreviewBody: `<style>.card-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}.bc{background:#3c3c3e;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px 32px;min-height:200px}.bc-logo{display:flex;flex-direction:column;align-items:center;gap:16px}.bc-wordmark{color:#fff;letter-spacing:.35em;font-size:12px;font-weight:300;font-family:sans-serif}.bc-contact-side{display:flex;align-items:center;gap:0;width:100%}.bc-logo-sm{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}.bc-divider{width:1px;background:rgba(255,255,255,.22);align-self:stretch;margin:0 24px}.bc-people{display:flex;flex-direction:column;gap:20px}.bc-name{color:#fff;font-size:17px;font-weight:500;margin:0 0 3px;font-family:sans-serif}.bc-role{color:rgba(255,255,255,.65);font-size:12px;margin:0 0 2px;font-family:sans-serif;font-weight:300}.bc-phone{color:rgba(255,255,255,.85);font-size:13px;margin:0;font-family:sans-serif;font-weight:300}.label{font-size:11px;color:#888;text-align:center;margin-top:8px;font-family:sans-serif}@media(max-width:600px){.card-wrap{grid-template-columns:1fr}}</style><div class="card-wrap"><div style="display:flex;flex-direction:column"><div class="bc"><div class="bc-logo"><svg width="72" height="80" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="92" x2="44" y2="8"/><line x1="44" y1="8" x2="68" y2="62"/><path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/></svg><span class="bc-wordmark">P H O N E</span></div></div><p class="label">Back / Logo side</p></div><div style="display:flex;flex-direction:column"><div class="bc" style="padding:28px 24px"><div class="bc-contact-side"><div class="bc-logo-sm"><svg width="44" height="50" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="92" x2="44" y2="8"/><line x1="44" y1="8" x2="68" y2="62"/><path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/></svg><span style="color:#fff;letter-spacing:.3em;font-size:8px;font-weight:300;font-family:sans-serif">P H O N E</span></div><div class="bc-divider"></div><div class="bc-people"><div><p class="bc-name">Ali ghodhbane</p><p class="bc-role">Manager</p><p class="bc-phone">+216 58 123 817</p></div><div><p class="bc-name">Yassine Baccali</p><p class="bc-role">Technician</p><p class="bc-phone">+216 25 744 454</p></div></div></div></div><p class="label">Front / Contact side</p></div></div>`,
+          p6PreviewNote: "Recreated from the original print file with a custom AG monogram SVG.",
+          p6ExplainerTitle: "AG Phone (Design Notes)",
+          p6ExplainerDocTitle: "AG Phone Business Card (Design Notes)",
+          p6ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Brief</h2><p>Business card system for a local phone shop in Tunis: premium visual identity, clear contact hierarchy, and print-ready output.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Design Logic</h2><ul><li>Interlocked AG monogram as core identity mark</li><li>Deep charcoal palette for premium tone</li><li>Light sans-serif typography with strong readability</li><li>Two-side layout: brand face and contact face</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Deliverable</h2><p>Print-ready business card prepared for local production in Tunis.</p></div>`,
+          workflowTitle: "Apps Script Workflow Overview",
+          workflowDocTitle: "Apps Script Workflow",
+          workflowBody: `<div class="panel"><p><strong>Flow:</strong> Google Form submit -> onFormSubmit(e) -> QUIZ_ATTEMPTS -> MODULE/PARCOURS_PROGRESS -> certificate PDF -> Drive/Gmail.</p></div>`,
+          workflowNote: "Workflow diagram and code summary.",
+          caseStudyTitle: "Google Sites LMS (Case Study)",
+          caseStudyDocTitle: "Google Sites LMS (Carrefour Learning)",
+          caseStudyBody: `<div class="panel"><p>Confidential internal learning platform built with Google Sites and Google Workspace. Sensitive business data is removed.</p></div>`,
+          missionTitle: "Fil Rouge Missions (Adaptive Assessment)",
+          missionDocTitle: "Fil Rouge Missions",
+          missionBody: `<div class="panel"><p>Scenario-based adaptive assessment where context and decision paths change based on role and business perimeter.</p></div>`
+        },
+        fr: {
+          embeddedPdf: "PDF local intégré depuis le dépôt du portfolio.",
+          p1PreviewTitle: "Google Sites LMS (Aperçu de la plateforme)",
+          p1PreviewDocTitle: "Google Sites LMS (Vue d'ensemble)",
+          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Structure de la plateforme</h2><p>Le LMS est conçu en 4 niveaux sur Google Sites pour la formation en category management.</p><div class="grid"><div><div class="chip">Accueil</div><p style="font-size:13px">Page d'entrée avec identité et CTA</p></div><div><div class="chip">Parcours</div><p style="font-size:13px">Catalogue des parcours</p></div><div><div class="chip">Modules</div><p style="font-size:13px">Pages modules et ressources par parcours</p></div><div><div class="chip">Évaluations</div><p style="font-size:13px">Quiz et missions adaptatives</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Captures du site</h2><div class="grid"><div><img src="assets/media/site-home.png" alt="Accueil Google Sites"><p style="font-size:13px">Page d'accueil</p></div><div><img src="assets/media/site-parcours.png" alt="Parcours Google Sites"><p style="font-size:13px">Catalogue des parcours</p></div><div><img src="assets/media/site-p01-abg.png" alt="Page ABG"><p style="font-size:13px">Page ABG</p></div><div><img src="assets/media/site-p02-assortimpact.png" alt="Page Assort impact"><p style="font-size:13px">Page Assort'impact</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2><img src="assets/media/site-p03-store-adaptor.png" alt="Page Store Adaptor"></div>`,
+          p1ExplainerTitle: "Google Sites LMS (Étude de cas)",
+          p1ExplainerDocTitle: "Google Sites LMS (Plateforme Carrefour Learning)",
+          p1ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Contexte</h2><p>Le parcours de formation interne était fragmenté. L'objectif était de centraliser l'apprentissage dans un LMS premium autoportant, uniquement avec Google Workspace.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Livrables</h2><ul><li>Architecture 4 niveaux (Accueil, Parcours, Modules, Ressources)</li><li>Templates HTML/CSS personnalisés intégrés à Google Sites</li><li>Pages de cas d'usage métier et parcours pratique</li><li>Structure réutilisable pour déployer de nouveaux parcours</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Onboarding plus rapide et navigation claire</li><li>Aucune stack externe nécessaire</li><li>Système scalable et maintenable</li></ul></div>`,
+          p2PreviewTitle: "Apps Script (Architecture)",
+          p2PreviewDocTitle: "Système de certification Apps Script (Architecture)",
+          p2PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Flux de bout en bout</h2><p>Soumission Google Form -> onFormSubmit(e) -> journalisation des tentatives -> mise à jour progression module/parcours -> vérification d'éligibilité -> génération PDF -> stockage Drive -> envoi Gmail.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Architecture des données</h2><div class="grid"><div><div class="chip">QUIZ_ATTEMPTS</div><p style="font-size:13px">Historique complet des soumissions</p></div><div><div class="chip">MODULE_PROGRESS</div><p style="font-size:13px">Meilleur score et statut de complétion par module</p></div><div><div class="chip">PARCOURS_PROGRESS</div><p style="font-size:13px">Progression consolidée par parcours</p></div><div><div class="chip">CERTIFICATES_LOG</div><p style="font-size:13px">Historique des certificats émis</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Exemple de certificat</h2><img src="assets/media/certificate-example.png" alt="Exemple de certificat"></div>`,
+          p2ExplainerTitle: "Apps Script (Workflow complet)",
+          p2ExplainerDocTitle: "Système Apps Script de certification et progression",
+          p2ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Problème</h2><p>Le suivi de progression et l'envoi des certificats étaient manuels et chronophages.</p><p><strong>Objectif :</strong> automatiser entièrement le cycle de la soumission quiz jusqu'à la livraison au participant.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Logique de build</h2><ol><li>Normalisation des événements Form en payload structuré</li><li>Journal append-only des tentatives</li><li>Mise à jour progression module et parcours</li><li>Génération du certificat dès éligibilité</li><li>Stockage Drive et envoi par email</li></ol></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Zéro opération manuelle du quiz au certificat</li><li>Visibilité en temps réel de la progression</li><li>Processus scalable pour de gros volumes d'apprenants</li></ul></div>`,
+          p3PreviewTitle: "Évaluation adaptative (Aperçu mission)",
+          p3PreviewDocTitle: "Mission Fil Rouge (Exemple de déroulé)",
+          p3PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Concept</h2><p>Évaluation scénarisée où l'apprenant prend des décisions métier contextuelles au lieu de répondre à un quiz statique.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Paramètres adaptatifs</h2><ul><li><strong>Rôle :</strong> Opérationnel, Stratégique ou Data-Driven</li><li><strong>Périmètre :</strong> Local, Régional ou National</li></ul><p>Ces choix modifient dynamiquement options, conséquences et feedback.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Déroulé</h2><ol><li>Brief de situation</li><li>Point de décision 1</li><li>Conséquences et nouveau contexte</li><li>Point de décision 2</li><li>Debrief contextualisé</li></ol></div>`,
+          p3PreviewNote: "Les contenus de mission affichés sont sanitisés et ne contiennent aucune donnée sensible.",
+          p3ExplainerTitle: "Missions Fil Rouge (Approche de construction)",
+          p3ExplainerDocTitle: "Évaluation adaptative Fil Rouge",
+          p3ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Pourquoi c'est utile</h2><p>Les quiz classiques mesurent la mémoire, alors que le category management exige du jugement contextuel et des arbitrages.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Principes de design</h2><ul><li>Entrée et scoring par persona</li><li>Données scénario selon le périmètre</li><li>Conséquences branchées sur plusieurs décisions</li><li>Feedback contextualisé plutôt que vrai/faux</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Intégration</h2><p>Les missions Fil Rouge s'intègrent au pipeline Apps Script pour le suivi de progression et l'éligibilité certificat.</p></div>`,
+          p4PreviewTitle: "Deck CUPRA - Storytelling",
+          p4ExplainerTitle: "Deck CUPRA (Processus de création)",
+          p4ExplainerDocTitle: "Deck CUPRA - Storytelling",
+          p4ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Contexte</h2><p>Deck de marketing stratégique réalisé en solo pour un projet académique avec une structure narrative de niveau exécutif.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Méthode</h2><ol><li>Recherche marché et benchmark concurrentiel</li><li>Narratif orienté décision</li><li>Système visuel aligné à la marque</li><li>Itérations successives avant livraison finale</li></ol></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résultat</h2><p>Un deck de style consulting centré sur positionnement, options stratégiques et recommandations actionnables.</p></div>`,
+          p5PreviewTitle: "Aperçu du deck finance",
+          p5ExplainerTitle: "Présentations business (Galerie)",
+          p5ExplainerDocTitle: "Deck finance et galerie de présentations",
+          p5ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Deck finance</h2><p>Présentation de business school centrée sur la logique de valorisation, l'analyse de ratios et la communication d'une thèse d'investissement.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Autres présentations</h2><p>D'autres decks combinent analyse business structurée, storytelling visuel clair et conclusions orientées action.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Standard design</h2><ul><li>Fort signal, faible bruit</li><li>Data visualisation au service du récit</li><li>Orientation executive summary</li></ul></div>`,
+          p6PreviewTitle: "AG Phone (Carte de visite - Recto/Verso)",
+          p6PreviewDocTitle: "Carte de visite AG Phone",
+          p6PreviewBody: `<style>.card-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}.bc{background:#3c3c3e;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px 32px;min-height:200px}.bc-logo{display:flex;flex-direction:column;align-items:center;gap:16px}.bc-wordmark{color:#fff;letter-spacing:.35em;font-size:12px;font-weight:300;font-family:sans-serif}.bc-contact-side{display:flex;align-items:center;gap:0;width:100%}.bc-logo-sm{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}.bc-divider{width:1px;background:rgba(255,255,255,.22);align-self:stretch;margin:0 24px}.bc-people{display:flex;flex-direction:column;gap:20px}.bc-name{color:#fff;font-size:17px;font-weight:500;margin:0 0 3px;font-family:sans-serif}.bc-role{color:rgba(255,255,255,.65);font-size:12px;margin:0 0 2px;font-family:sans-serif;font-weight:300}.bc-phone{color:rgba(255,255,255,.85);font-size:13px;margin:0;font-family:sans-serif;font-weight:300}.label{font-size:11px;color:#888;text-align:center;margin-top:8px;font-family:sans-serif}@media(max-width:600px){.card-wrap{grid-template-columns:1fr}}</style><div class="card-wrap"><div style="display:flex;flex-direction:column"><div class="bc"><div class="bc-logo"><svg width="72" height="80" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="92" x2="44" y2="8"/><line x1="44" y1="8" x2="68" y2="62"/><path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/></svg><span class="bc-wordmark">P H O N E</span></div></div><p class="label">Verso / Côté logo</p></div><div style="display:flex;flex-direction:column"><div class="bc" style="padding:28px 24px"><div class="bc-contact-side"><div class="bc-logo-sm"><svg width="44" height="50" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="92" x2="44" y2="8"/><line x1="44" y1="8" x2="68" y2="62"/><path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/></svg><span style="color:#fff;letter-spacing:.3em;font-size:8px;font-weight:300;font-family:sans-serif">P H O N E</span></div><div class="bc-divider"></div><div class="bc-people"><div><p class="bc-name">Ali ghodhbane</p><p class="bc-role">Manager</p><p class="bc-phone">+216 58 123 817</p></div><div><p class="bc-name">Yassine Baccali</p><p class="bc-role">Technicien</p><p class="bc-phone">+216 25 744 454</p></div></div></div></div><p class="label">Recto / Côté contact</p></div></div>`,
+          p6PreviewNote: "Recréation à partir du fichier print original avec monogramme AG en SVG personnalisé.",
+          p6ExplainerTitle: "AG Phone (Notes de design)",
+          p6ExplainerDocTitle: "Carte de visite AG Phone (Notes de design)",
+          p6ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Brief</h2><p>Système de carte de visite pour une boutique de téléphonie à Tunis : identité premium, hiérarchie de contact claire et sortie prête à l'impression.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Logique de design</h2><ul><li>Monogramme AG imbriqué comme marque centrale</li><li>Palette charbon profond pour un rendu premium</li><li>Typographie sans-serif légère et lisible</li><li>Mise en page recto/verso : image de marque + contact</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Livrable</h2><p>Carte de visite print-ready préparée pour production locale à Tunis.</p></div>`,
+          workflowTitle: "Vue d'ensemble du workflow Apps Script",
+          workflowDocTitle: "Workflow Apps Script",
+          workflowBody: `<div class="panel"><p><strong>Flux :</strong> Soumission Google Form -> onFormSubmit(e) -> QUIZ_ATTEMPTS -> MODULE/PARCOURS_PROGRESS -> certificat PDF -> Drive/Gmail.</p></div>`,
+          workflowNote: "Schéma de workflow et résumé du code.",
+          caseStudyTitle: "Google Sites LMS (Étude de cas)",
+          caseStudyDocTitle: "Google Sites LMS (Carrefour Learning)",
+          caseStudyBody: `<div class="panel"><p>Plateforme de formation interne confidentielle construite avec Google Sites et Google Workspace. Les données sensibles sont retirées.</p></div>`,
+          missionTitle: "Missions Fil Rouge (Évaluation adaptative)",
+          missionDocTitle: "Missions Fil Rouge",
+          missionBody: `<div class="panel"><p>Modèle d'évaluation scénarisé où le contexte et les chemins de décision changent selon le rôle et le périmètre métier.</p></div>`
+        }
+      };
+
+      const copy = L[lang];
+
       if (kind === "p1-preview") {
-        modalTitle.textContent = "Google Sites LMS (Platform Preview)";
+        modalTitle.textContent = copy.p1PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Google Sites LMS (Platform Overview)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Platform Structure</h2>
-  <p>The LMS is a 4-level hierarchy built in Google Sites, designed for enterprise category management training.</p>
-  <div class="grid">
-    <div><div class="chip">Accueil</div><p style="font-size:13px">Landing page with brand identity and entry CTAs</p></div>
-    <div><div class="chip">Parcours</div><p style="font-size:13px">Catalog of 3 learning tracks with entry points</p></div>
-    <div><div class="chip">Parcours ABG</div><p style="font-size:13px">Category management modules and business cases</p></div>
-    <div><div class="chip">Parcours Assort'impact</div><p style="font-size:13px">Use cases and guided decision support</p></div>
-  </div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Website Screenshots</h2>
-  <div class="grid">
-    <div><img src="assets/media/site-home.png" alt="Google Sites home page"><p style="font-size:13px">Home page</p></div>
-    <div><img src="assets/media/site-parcours.png" alt="Google Sites parcours catalogue"><p style="font-size:13px">Parcours catalogue</p></div>
-    <div><img src="assets/media/site-p01-abg.png" alt="Google Sites ABG page"><p style="font-size:13px">ABG page</p></div>
-    <div><img src="assets/media/site-p02-assortimpact.png" alt="Google Sites Assort impact page"><p style="font-size:13px">Assort'impact page</p></div>
-  </div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2>
-  <img src="assets/media/site-p03-store-adaptor.png" alt="Google Sites Store Adaptor page">
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p1PreviewDocTitle, copy.p1PreviewBody);
         modalNote.textContent = "";
       } else if (kind === "p1-explainer") {
-        modalTitle.textContent = "Google Sites LMS (Case Study and Full Workflow)";
+        modalTitle.textContent = copy.p1ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Google Sites LMS (Carrefour Learning Platform)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Context and Problem</h2>
-  <p>Carrefour's category management teams needed a structured internal training tool. The existing onboarding process was fragmented across emails and documents with no scalable delivery mechanism. The goal: build a premium, self-serve learning platform using only Google Workspace tools at zero external cost.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Platform Architecture (4-Level Hierarchy)</h2>
-  <ul>
-    <li><strong>Level 1 (Accueil):</strong> Landing page with brand identity, CTA to discover the learning tracks, and overview of available content.</li>
-    <li><strong>Level 2 (Parcours):</strong> Catalog view listing 3 learning tracks with entry points and progress context.</li>
-    <li><strong>Level 3 (Module Pages):</strong> Per-parcours module listings with learning objectives, embedded resources, and quiz access points.</li>
-    <li><strong>Level 4 (Resources):</strong> Embedded Google Slides, Docs, and Sheets for lesson content and business case studies.</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Technical Approach</h2>
-  <p>Google Sites does not support custom HTML natively. To achieve premium visual design, each page was built as a standalone HTML/CSS file (in the workspace under <code>google-sites-lms/templates/</code>), then embedded into Google Sites via the HTML embed gadget.</p>
-  <ul>
-    <li>Custom CSS with brand color tokens, responsive grid layouts, and card components</li>
-    <li>Navigation links wired between pages for cohesive UX flow</li>
-    <li>Business use-case cards with scenario prompts embedded in parcours pages</li>
-    <li>Script-assisted rebuild pipeline to regenerate slide assets on demand</li>
-    <li>Adaptive Fil Rouge missions integrated at the end of each parcours as capstone assessment</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Pages Delivered</h2>
-  <div class="grid">
-    <div><div class="chip">ACCUEIL.html</div><p style="font-size:13px">Home page with CTA and platform overview</p></div>
-    <div><div class="chip">PARCOURS.html</div><p style="font-size:13px">Catalog of 3 learning tracks with entry points</p></div>
-    <div><div class="chip">P01.html</div><p style="font-size:13px">ABG track: modules and resources</p></div>
-    <div><div class="chip">P02.html</div><p style="font-size:13px">Assort'impact track: use-cases and adaptive missions</p></div>
-  </div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Impact</h2>
-  <ul>
-    <li>Accelerated onboarding for category management teams with structured self-serve content</li>
-    <li>Fully embedded in Google Workspace: no external tools, no cost, no IT dependency</li>
-    <li>Reusable template architecture: adding new tracks requires only duplicating a template file</li>
-    <li>Premium visual quality comparable to paid LMS platforms</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Confidentiality</h2>
-  <p>All materials shown are sanitized. Learner data, internal links, and sensitive business content have been removed. The architecture and design patterns are fully shareable.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p1ExplainerDocTitle, copy.p1ExplainerBody);
         modalNote.textContent = "";
       } else if (kind === "p2-preview") {
-        modalTitle.textContent = "Apps Script (Architecture Diagram and Code)";
+        modalTitle.textContent = copy.p2PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Apps Script Certification System (Architecture)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">End-to-End Trigger Flow</h2>
-  <div style="background:#111820;border-radius:14px;padding:18px;overflow-x:auto;">
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:monospace;font-size:13px;color:#e7eefb;line-height:2.2">
-      <span style="background:#1e3a5f;padding:6px 12px;border-radius:8px;">Google Form Submit</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#1e3a5f;padding:6px 12px;border-radius:8px;">onFormSubmit(e)</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#1e3a5f;padding:6px 12px;border-radius:8px;">normalizeSubmission()</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#1a4a2e;padding:6px 12px;border-radius:8px;">QUIZ_ATTEMPTS sheet</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#1a4a2e;padding:6px 12px;border-radius:8px;">MODULE_PROGRESS sheet</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#1a4a2e;padding:6px 12px;border-radius:8px;">PARCOURS_PROGRESS sheet</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#4a2020;padding:6px 12px;border-radius:8px;">isEligibleForCertificate()</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#4a2020;padding:6px 12px;border-radius:8px;">generateCertificatePdf()</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#3a1a4a;padding:6px 12px;border-radius:8px;">Drive storage</span>
-      <span style="color:#64b5f6;">&#8594;</span>
-      <span style="background:#3a1a4a;padding:6px 12px;border-radius:8px;">Gmail notification</span>
-    </div>
-  </div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Data Architecture (Google Sheets)</h2>
-  <div class="grid">
-    <div><div class="chip">QUIZ_ATTEMPTS</div><p style="font-size:13px">Append-only log of all quiz submissions: scores, timestamps, module IDs, user emails</p></div>
-    <div><div class="chip">MODULE_PROGRESS</div><p style="font-size:13px">Upserted row per user/module: best score, completion flag, attempt count</p></div>
-    <div><div class="chip">PARCOURS_PROGRESS</div><p style="font-size:13px">Rolled-up completion % per user per parcours, drives certificate eligibility</p></div>
-    <div><div class="chip">CERTIFICATES_LOG</div><p style="font-size:13px">Audit trail of issued certificates: user, date, Drive file ID</p></div>
-  </div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Certificate Output</h2>
-  <img src="assets/media/certificate-example.png" alt="Certificate example">
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Main Entry Point</h2>
-  <pre>function onFormSubmit(e) {
-  const payload = normalizeSubmission(e);
-  appendQuizAttempt(payload);
-  upsertModuleProgress(payload);
-  upsertParcoursProgress(payload);
-  if (isEligibleForCertificate(payload.userEmail)) {
-    generateCertificatePdf(payload.userEmail);
-  }
-}</pre>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Dashboard Visibility API</h2>
-  <pre>function getProgressDashboardData(payload) {
-  const viewer = getViewerContext(payload);
-  const scopedRows = applyVisibilityScope(viewer, payload);
-  return buildDashboardResponse(scopedRows);
-}</pre>
-  <p style="font-size:13px">Role-based scoping: learners see only their own data; managers see their team within their assigned perimeter.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p2PreviewDocTitle, copy.p2PreviewBody);
         modalNote.textContent = "";
       } else if (kind === "p2-explainer") {
-        modalTitle.textContent = "Apps Script (Full Workflow Explained)";
+        modalTitle.textContent = copy.p2ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Apps Script Certification and Progress System (Full Workflow)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Problem Statement</h2>
-  <p>The LMS had no automated way to track quiz results, update learner progress, or issue certificates. Everything was manual: trainers checked Form responses individually, updated spreadsheets by hand, and sent certificates via email. This created delays, inconsistencies, and a poor learner experience.</p>
-  <p><strong>Goal:</strong> build a zero-touch pipeline handling the entire lifecycle from quiz submission to certificate delivery with no human steps required.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 1 (Form Trigger and Normalization)</h2>
-  <p>A Google Forms quiz submission fires an installable <strong>onFormSubmit(e) trigger</strong> via Apps Script. The raw form event contains unstructured response data. <code>normalizeSubmission(e)</code> parses it into a clean, typed payload with user email, module ID, parcours ID, score, timestamp, and answers.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 2 (Logging to QUIZ_ATTEMPTS)</h2>
-  <p><code>appendQuizAttempt(payload)</code> appends a new row to the QUIZ_ATTEMPTS sheet. Design choice: append-only, not upsert. Every attempt is preserved for analytics, retake tracking, and compliance auditing. Best scores are computed from this log, not overwritten.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 3 (Module Progress Upsert)</h2>
-  <p><code>upsertModuleProgress(payload)</code> finds or creates the user/module row in MODULE_PROGRESS and updates best score, attempt count, completion flag (when score is at or above the configurable passing threshold), and last attempt timestamp.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 4 (Parcours Rollup)</h2>
-  <p><code>upsertParcoursProgress(payload)</code> reads all module completion flags for the user in this parcours and recalculates the overall completion %. The PARCOURS_PROGRESS row is always in sync after every quiz submission with no batch jobs needed.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 5 (Certificate Generation Pipeline)</h2>
-  <p>When <code>isEligibleForCertificate()</code> returns true, the generation pipeline runs:</p>
-  <ol>
-    <li>Certificate template (Google Slides) duplicated via Drive API</li>
-    <li>Slides API replaces name, track, and date placeholders</li>
-    <li>Filled deck exported as PDF via Drive export URL</li>
-    <li>PDF saved to learner's Drive folder</li>
-    <li>Certificate emailed to the learner as an attachment</li>
-    <li>Entry written to CERTIFICATES_LOG for audit</li>
-  </ol>
-  <pre>function generateCertificatePdf(userEmail) {
-  const learner = getLearnerProfile(userEmail);
-  const copy = DriveApp.getFileById(CERT_TEMPLATE_ID)
-    .makeCopy("Certificate_" + learner.name);
-  const slides = SlidesApp.openById(copy.getId());
-  slides.replaceAllText("{LEARNER_NAME}", learner.name);
-  slides.replaceAllText("{PARCOURS_NAME}", learner.parcours);
-  slides.replaceAllText("{DATE}", formatDate(new Date()));
-  slides.saveAndClose();
-  const pdfBlob = DriveApp.getFileById(copy.getId())
-    .getAs("application/pdf");
-  const pdfFile = DriveApp.getFolderById(CERTS_FOLDER_ID)
-    .createFile(pdfBlob);
-  logCertificate(userEmail, pdfFile.getId());
-  GmailApp.sendEmail(userEmail, "Your certificate",
-    "Congratulations! Your certificate is available.",
-    { attachments: [pdfBlob] });
-}</pre>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Step 6 (Dashboard and Visibility Scoping)</h2>
-  <p>A separate Apps Script Web App serves a progress dashboard. <code>getViewerContext()</code> identifies the caller role. Learners see only their own data; managers see their team within their perimeter. This prevents data leakage without requiring a separate auth system.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Impact</h2>
-  <ul>
-    <li>100% automated end-to-end: zero manual steps from quiz to certificate</li>
-    <li>Real-time progress tracking across all parcours and modules</li>
-    <li>Scalable to any number of learners with no additional overhead</li>
-    <li>Full audit trail preserved for compliance and reporting</li>
-    <li>Built entirely within Google Workspace: no external dependencies or costs</li>
-  </ul>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p2ExplainerDocTitle, copy.p2ExplainerBody);
         modalNote.textContent = "";
       } else if (kind === "p3-preview") {
-        modalTitle.textContent = "Adaptive Assessment (Sample Mission Flow)";
+        modalTitle.textContent = copy.p3PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Fil Rouge Mission (Sample Flow)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">What is a Fil Rouge Mission?</h2>
-  <p>A scenario-based assessment where the learner takes on a business role and makes a series of decisions. Unlike a quiz, there are no universally correct answers: the quality of each decision is evaluated relative to the learner's selected role and business context.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Entry Step (Role and Context Selection)</h2>
-  <p>Before the mission starts, the learner selects:</p>
-  <ul>
-    <li><strong>Role:</strong> Operational, Strategic, or Data-Driven</li>
-    <li><strong>Business scope:</strong> Local, Regional, or National</li>
-  </ul>
-  <p>These two choices determine which scenario data is displayed, which options are available at each decision point, and what "good judgment" looks like for the rest of the mission.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Mission Structure</h2>
-  <ol>
-    <li><strong>Situation brief:</strong> A realistic business situation is described with relevant data (performance gaps, supplier context, budget constraints).</li>
-    <li><strong>Decision point 1:</strong> Choose from 3-4 options, each representing a different business approach.</li>
-    <li><strong>Consequence:</strong> The scenario evolves based on your choice, unlocking new data and framing the next decision.</li>
-    <li><strong>Decision point 2:</strong> A follow-up decision that depends on what was decided earlier.</li>
-    <li><strong>Debrief:</strong> Contextual feedback explains the trade-offs of the path taken, calibrated to the learner's role.</li>
-  </ol>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Adaptive Logic</h2>
-  <p>The same mission runs differently for different learners. A learner in the Operational role receives different feedback than one in the Strategic role for the same decision, because the expected priorities and trade-offs differ by role. No two learners receive the same feedback path.</p>
-</div>`
-        );
-        modalNote.textContent = "The actual mission content uses sanitized business scenarios. No live or sensitive data is exposed.";
+        modalFrame.srcdoc = makeDoc(copy.p3PreviewDocTitle, copy.p3PreviewBody);
+        modalNote.textContent = copy.p3PreviewNote;
       } else if (kind === "p3-explainer") {
-        modalTitle.textContent = "Fil Rouge Missions (How We Built It)";
+        modalTitle.textContent = copy.p3ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Fil Rouge Adaptive Assessment (Design and Build Process)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">The Problem with Traditional Quizzes</h2>
-  <p>Standard quizzes measure memory, not judgment. For category management roles, what matters is decision-making quality in context. A learner who scores 90% on a multiple-choice quiz might still make poor decisions in real situations.</p>
-  <p><strong>Goal:</strong> design an assessment where context, complexity, and decision pathways adapt to the learner's role and business environment.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Design Principles</h2>
-  <ul>
-    <li><strong>Persona-based entry:</strong> Learner selects their role (Operational, Strategic, Data-Driven). This shapes which options are available and what good judgment looks like.</li>
-    <li><strong>Perimeter selection:</strong> Local, Regional, or National scope changes the scenario data, supplier landscape, and KPIs shown.</li>
-    <li><strong>Branching decisions:</strong> Earlier choices affect what options appear later, creating realistic consequence chains.</li>
-    <li><strong>Contextual feedback:</strong> Not correct/incorrect but a business explanation of the implications of the choice in the given context.</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Build Process</h2>
-  <ol>
-    <li><strong>Mission scripting:</strong> Each mission written as a scenario tree: root context, 2-3 decision points, branching outcomes per persona.</li>
-    <li><strong>Content design:</strong> Scenario data sanitized from real category work to feel authentic without exposing sensitive information.</li>
-    <li><strong>UX integration:</strong> Embedded in the Google Sites parcours pages as interactive cards; learners navigate via button clicks.</li>
-    <li><strong>Scoring logic:</strong> Apps Script tracks decision path quality using a weighted rubric per persona, not just the final answer.</li>
-    <li><strong>Feedback library:</strong> Pre-written contextual feedback blocks for each decision combined with persona and perimeter.</li>
-  </ol>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">LMS Integration</h2>
-  <p>Fil Rouge missions serve as the capstone assessment at the end of each parcours. They plug into the same Apps Script pipeline as standard quizzes, so progress tracking, completion flags, and certificate eligibility all work identically.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Why This Is Innovative</h2>
-  <p>Most corporate LMS platforms use static quizzes. This adaptive mission framework is inspired by simulation-based learning used in executive education, built entirely within Google Workspace at near-zero cost, making it accessible for teams without specialized simulation software budgets.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p3ExplainerDocTitle, copy.p3ExplainerBody);
         modalNote.textContent = "";
-      } else if (kind === "p4-preview") {
-        modalTitle.textContent = "CUPRA Storytelling Deck";
+      } else if (kind === "p4-preview" || kind === "cupra") {
+        modalTitle.textContent = copy.p4PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.srcdoc = "";
         modalFrame.src = "assets/decks/cupra-deck.pdf#view=FitH";
-        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
+        modalNote.textContent = copy.embeddedPdf;
       } else if (kind === "p4-explainer") {
-        modalTitle.textContent = "CUPRA Deck (How It Was Made)";
+        modalTitle.textContent = copy.p4ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "CUPRA Storytelling Deck (Process and Context)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Academic Context</h2>
-  <p>This deck was created as a solo deliverable for a strategic marketing course at Albert School Paris. The brief: select a brand, analyze its positioning, and build a decision-oriented presentation suitable for the brand's executive team.</p>
-  <p>CUPRA was chosen for its compelling strategic position: a premium-sporty sub-brand of SEAT/Volkswagen Group forging its own identity against established players like Alfa Romeo, BMW M-series, and Hyundai N-line.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Deck Objectives</h2>
-  <ul>
-    <li>Establish CUPRA's brand identity and current market positioning</li>
-    <li>Analyze competitive landscape and whitespace opportunities</li>
-    <li>Build a compelling narrative arc from problem to strategic recommendation</li>
-    <li>Demonstrate premium visual design with consistent brand voice</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Build Process</h2>
-  <ol>
-    <li><strong>Research:</strong> Market data, brand positioning maps, consumer perception analysis, competitive benchmarking across the sports compact segment</li>
-    <li><strong>Narrative structure:</strong> Built using the Problem / Stakes / Solution / Proof / Call to Action consulting framework</li>
-    <li><strong>Visual design:</strong> CUPRA's brand colors (copper and dark tones), bold typography, performance-focused imagery, all built from scratch in Google Slides</li>
-    <li><strong>Writing:</strong> Executive-quality copy: concise, high-impact, zero filler slides. Each slide earns its place in the story.</li>
-    <li><strong>Iteration:</strong> 3 complete versions reviewed against the brief before final submission</li>
-  </ol>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">What Makes It Stand Out</h2>
-  <p>Most student decks are information dumps. This one is built like a consulting deck: visuals support the argument rather than decorating it, the narrative drives toward a clear decision, and the final slide ends with a specific actionable recommendation rather than a generic summary.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p4ExplainerDocTitle, copy.p4ExplainerBody);
         modalNote.textContent = "";
-      } else if (kind === "p5-preview") {
-        modalTitle.textContent = "Finance Deck Preview";
+      } else if (kind === "p5-preview" || kind === "finance") {
+        modalTitle.textContent = copy.p5PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.srcdoc = "";
         modalFrame.src = "assets/decks/finance-deck.pdf#view=FitH";
-        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
+        modalNote.textContent = copy.embeddedPdf;
       } else if (kind === "p5-explainer") {
-        modalTitle.textContent = "Business Presentations (Gallery Overview)";
+        modalTitle.textContent = copy.p5ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Finance Deck and Business Presentation Gallery",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Finance Project Deck</h2>
-  <p>A financial analysis presentation built for a business strategy course. Covers company valuation methodology, financial ratio analysis, and investment thesis construction. Demonstrates the ability to translate dense financial data into a decision-oriented narrative for non-finance audiences.</p>
-  <div class="chip">Financial Analysis</div><div class="chip">Valuation</div><div class="chip">Investment Thesis</div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Business Analysis Narratives</h2>
-  <p>A series of presentations built across different courses, each following a consistent approach: frame the business context, define the problem clearly, present data-driven insights, and close with an actionable recommendation. Topics include market entry analysis, competitive strategy, and operational efficiency.</p>
-  <div class="chip">Business Cases</div><div class="chip">Data Storytelling</div><div class="chip">Strategy Frameworks</div>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Visual Design Philosophy</h2>
-  <ul>
-    <li><strong>Minimal text per slide:</strong> slides are a visual support, not a reading document</li>
-    <li><strong>Data visualization:</strong> charts built to communicate a point, not just display numbers</li>
-    <li><strong>Brand-aligned color palettes:</strong> each deck uses a palette appropriate to its context</li>
-    <li><strong>Executive summary first:</strong> every deck opens with a one-slide key takeaway</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Availability</h2>
-  <p>The Finance Deck is now embedded directly as a PDF hosted in this portfolio repository. Additional decks from the gallery can be shared on request.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p5ExplainerDocTitle, copy.p5ExplainerBody);
         modalNote.textContent = "";
-      } else if (kind === "finance") {
-        modalTitle.textContent = "Finance Deck Preview";
-        modalFrame.style.display = "block";
-        modalFrame.srcdoc = "";
-        modalFrame.src = "assets/decks/finance-deck.pdf#view=FitH";
-        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
-      } else if (kind === "cupra") {
-        modalTitle.textContent = "CUPRA Storytelling Deck";
-        modalFrame.style.display = "block";
-        modalFrame.srcdoc = "";
-        modalFrame.src = "assets/decks/cupra-deck.pdf#view=FitH";
-        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
       } else if (kind === "workflow") {
-        modalTitle.textContent = "Apps Script Workflow Overview";
+        modalTitle.textContent = copy.workflowTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Apps Script Workflow",
-          `<div class="panel"><p><strong>Flow:</strong> Google Form submit &#8594; onFormSubmit(e) &#8594; QUIZ_ATTEMPTS &#8594; MODULE/PARCOURS_PROGRESS &#8594; certificate PDF &#8594; Drive/Gmail.</p><pre>function onFormSubmit(e) {
-  const payload = normalizeSubmission(e);
-  appendQuizAttempt(payload);
-  upsertModuleProgress(payload);
-  upsertParcoursProgress(payload);
-  if (isEligibleForCertificate(payload.userEmail)) {
-    generateCertificatePdf(payload.userEmail);
-  }
-}</pre></div>`
-        );
-        modalNote.textContent = "Workflow diagram and code snippet.";
+        modalFrame.srcdoc = makeDoc(copy.workflowDocTitle, copy.workflowBody);
+        modalNote.textContent = copy.workflowNote;
       } else if (kind === "case-study") {
-        modalTitle.textContent = "Google Sites LMS (Case Study)";
+        modalTitle.textContent = copy.caseStudyTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Google Sites LMS (Carrefour Learning)",
-          `<div class="panel"><p>Confidential internal learning platform built with Google Sites and Google Workspace. Architecture and design patterns are shareable; sensitive content has been removed.</p></div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.caseStudyDocTitle, copy.caseStudyBody);
         modalNote.textContent = "";
       } else if (kind === "mission") {
-        modalTitle.textContent = "Fil Rouge Missions (Adaptive Assessment)";
+        modalTitle.textContent = copy.missionTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "Fil Rouge Missions",
-          `<div class="panel"><p>A scenario-based adaptive assessment model where context and decision pathways adapt to the learner's role and business perimeter.</p></div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.missionDocTitle, copy.missionBody);
         modalNote.textContent = "";
       } else if (kind === "p6-preview") {
-        modalTitle.textContent = "AG Phone (Business Card - Both Sides)";
+        modalTitle.textContent = copy.p6PreviewTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "AG Phone Business Card",
-          `<style>
-  .card-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
-  .bc{background:#3c3c3e;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px 32px;min-height:200px}
-  .bc-logo{display:flex;flex-direction:column;align-items:center;gap:16px}
-  .bc-wordmark{color:#fff;letter-spacing:.35em;font-size:12px;font-weight:300;font-family:sans-serif}
-  .bc-contact-side{display:flex;align-items:center;gap:0;width:100%}
-  .bc-logo-sm{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}
-  .bc-divider{width:1px;background:rgba(255,255,255,.22);align-self:stretch;margin:0 24px}
-  .bc-people{display:flex;flex-direction:column;gap:20px}
-  .bc-name{color:#fff;font-size:17px;font-weight:500;margin:0 0 3px;font-family:sans-serif}
-  .bc-role{color:rgba(255,255,255,.65);font-size:12px;margin:0 0 2px;font-family:sans-serif;font-weight:300}
-  .bc-phone{color:rgba(255,255,255,.85);font-size:13px;margin:0;font-family:sans-serif;font-weight:300}
-  .label{font-size:11px;color:#888;text-align:center;margin-top:8px;font-family:sans-serif}
-  @media(max-width:600px){.card-wrap{grid-template-columns:1fr}}
-  </style>
-  <div class="card-wrap">
-    <div style="display:flex;flex-direction:column">
-      <div class="bc">
-        <div class="bc-logo">
-          <svg width="72" height="80" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="10" y1="92" x2="44" y2="8"/>
-            <line x1="44" y1="8" x2="68" y2="62"/>
-            <path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/>
-          </svg>
-          <span class="bc-wordmark">P H O N E</span>
-        </div>
-      </div>
-      <p class="label">Back / Logo side</p>
-    </div>
-    <div style="display:flex;flex-direction:column">
-      <div class="bc" style="padding:28px 24px">
-        <div class="bc-contact-side">
-          <div class="bc-logo-sm">
-            <svg width="44" height="50" viewBox="0 0 90 100" fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="10" y1="92" x2="44" y2="8"/>
-              <line x1="44" y1="8" x2="68" y2="62"/>
-              <path d="M 65 40 A 27 27 0 1 0 92 68 L 76 68"/>
-            </svg>
-            <span style="color:#fff;letter-spacing:.3em;font-size:8px;font-weight:300;font-family:sans-serif">P H O N E</span>
-          </div>
-          <div class="bc-divider"></div>
-          <div class="bc-people">
-            <div>
-              <p class="bc-name">Ali ghodhbane</p>
-              <p class="bc-role">Manager</p>
-              <p class="bc-phone">+216 58 123 817</p>
-            </div>
-            <div>
-              <p class="bc-name">Yassine Baccali</p>
-              <p class="bc-role">Technicien</p>
-              <p class="bc-phone">+216 25 744 454</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="label">Front / Contact side</p>
-    </div>
-  </div>`
-        );
-        modalNote.textContent = "Recreated from the original print file. Font: light sans-serif. Background: #3c3c3e. Logo: custom SVG approximation of the AG monogram.";
+        modalFrame.srcdoc = makeDoc(copy.p6PreviewDocTitle, copy.p6PreviewBody);
+        modalNote.textContent = copy.p6PreviewNote;
       } else if (kind === "p6-explainer") {
-        modalTitle.textContent = "AG Phone (Design Process Notes)";
+        modalTitle.textContent = copy.p6ExplainerTitle;
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc(
-          "AG Phone Business Card (Design Notes)",
-          `<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Brief</h2>
-  <p>A local phone repair and sales shop in Tunis needed a business card that felt premium despite being a small independent business. The brief was simple: two people, two roles, one card. The identity had to feel trustworthy and modern without looking generic.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Logo Design (AG Monogram)</h2>
-  <p>The logo combines the initials A and G into a single overlapping mark. The A is drawn as two converging diagonal strokes, and the G is an open circle arc that wraps around the lower-right of the A. The two shapes share a leg, creating a unified monogram rather than two separate letters placed side by side.</p>
-  <p>This kind of interlocked monogram signals craft and intentionality, which is rare for a small shop identity. The result is something that could belong to a premium boutique while remaining legible at small sizes.</p>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Color and Typography</h2>
-  <ul>
-    <li><strong>Background:</strong> deep charcoal (#3c3c3e) chosen over pure black for warmth and legibility under print conditions</li>
-    <li><strong>Type:</strong> light-weight sans-serif throughout; "PHONE" wordmark set in wide letter-spacing for brand-name clarity</li>
-    <li><strong>Hierarchy:</strong> name in large weight, role and phone number progressively lighter to guide the eye naturally</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Card Layout</h2>
-  <ul>
-    <li><strong>Back (logo side):</strong> purely the monogram and wordmark, centered, no other elements. Acts as a brand impression.</li>
-    <li><strong>Front (contact side):</strong> logo on the left as a small anchor, a vertical divider, then two contact blocks stacked on the right. The divider gives structure without needing a box or background panel.</li>
-  </ul>
-</div>
-<div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Deliverable</h2>
-  <p>Print-ready PDF in standard business card dimensions. Both sides designed as separate artboards. Delivered to the client for printing at a local print shop in Tunis.</p>
-</div>`
-        );
+        modalFrame.srcdoc = makeDoc(copy.p6ExplainerDocTitle, copy.p6ExplainerBody);
         modalNote.textContent = "";
       }
       modal.classList.add("open");
