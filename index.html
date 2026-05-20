@@ -1311,7 +1311,7 @@
       return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
         body{margin:0;padding:0;background:#f7f4ef}
         embed{display:block;width:100%;height:100vh;border:0}
-      </style><base href="${escapeHtml(document.baseURI)}"></head><body><embed src="${escapeHtml(pdfPath)}#view=FitH" type="application/pdf" /></body></html>`;
+      </style><base href="${escapeHtml(document.baseURI)}"></head><body><embed src="${encodeURI(pdfPath)}#view=FitH" type="application/pdf" /></body></html>`;
     }
 
     function openModal(kind) {
