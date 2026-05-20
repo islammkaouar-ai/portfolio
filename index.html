@@ -1307,6 +1307,13 @@
       </style><base href="${escapeHtml(document.baseURI)}"></head><body><div class="wrap"><h1>${escapeHtml(title)}</h1>${body}${note ? `<div class="panel"><strong>Note</strong><p>${escapeHtml(note)}</p></div>` : ""}</div></body></html>`;
     }
 
+    function makePdfDoc(pdfPath) {
+      return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+        body{margin:0;padding:0;background:#f7f4ef}
+        embed{display:block;width:100%;height:100vh;border:0}
+      </style><base href="${escapeHtml(document.baseURI)}"></head><body><embed src="${escapeHtml(pdfPath)}#view=FitH" type="application/pdf" /></body></html>`;
+    }
+
     function openModal(kind) {
       const lang = document.documentElement.lang === "fr" ? "fr" : "en";
       const L = {
@@ -1447,8 +1454,8 @@
       } else if (kind === "p4-preview" || kind === "cupra") {
         modalTitle.textContent = copy.p4PreviewTitle;
         modalFrame.style.display = "block";
-        modalFrame.srcdoc = "";
-        modalFrame.src = "assets/decks/cupra-deck.pdf#view=FitH";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makePdfDoc("assets/decks/cupra-deck.pdf");
         modalNote.textContent = copy.embeddedPdf;
       } else if (kind === "p4-explainer") {
         modalTitle.textContent = copy.p4ExplainerTitle;
@@ -1459,8 +1466,8 @@
       } else if (kind === "p5-preview" || kind === "finance") {
         modalTitle.textContent = copy.p5PreviewTitle;
         modalFrame.style.display = "block";
-        modalFrame.srcdoc = "";
-        modalFrame.src = "assets/decks/finance-deck.pdf#view=FitH";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makePdfDoc("assets/decks/finance-deck.pdf");
         modalNote.textContent = copy.embeddedPdf;
       } else if (kind === "p5-explainer") {
         modalTitle.textContent = copy.p5ExplainerTitle;
