@@ -836,7 +836,7 @@
         <div>
           <div class="kicker" data-i18n="heroKicker">Freelance Digital Builder | Tunisienne basée à Paris</div>
           <h1 data-i18n="heroTitle">From data to decisions, I build <span>smart learning ecosystems</span>, automation workflows, and executive decks.</h1>
-          <p data-i18n="heroText">J'aide les équipes à transformer des besoins complexes en expériences claires, premium et actionnables. I build Google Sites academies, Apps Script automations, and business storytelling decks with measurable business impact.</p>
+          <p data-i18n="heroText">I help teams transform complex needs into clear, premium, actionable experiences. I build Google Sites academies, Apps Script automations, and business storytelling decks with measurable business impact.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact" data-i18n="heroCtaStart">Start a Project</a>
             <a class="btn btn-ghost" href="#projects" data-i18n="heroCtaWork">View My Work</a>
@@ -957,113 +957,6 @@
       </div>
     </section>
 
-    <section id="proof" class="reveal">
-      <div class="section-head">
-        <h2 data-i18n="proofTitle">Technical Proof</h2>
-        <p data-i18n="proofSub">No sensitive data, only sanitized architecture and code patterns.</p>
-      </div>
-
-      <div class="workflow">
-        <div class="flow-row">
-          <span class="flow-step">Google Form Submit</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step">onFormSubmit(e)</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step">QUIZ_ATTEMPTS</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step">MODULE/PARCOURS_PROGRESS</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step">PDF Certificate (Slides)</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step">Drive + Email Delivery</span>
-        </div>
-      </div>
-
-      <div class="snippet-grid">
-        <article class="snippet">
-          <h4>google-sites-lms/scripts/rebuild_optim_slides.py</h4>
-          <pre>def delete_all_slides(prs: Presentation) -> None:
-  slide_ids = list(prs.slides._sldIdLst)
-  for slide_id in slide_ids:
-    rel_id = slide_id.rId
-    prs.part.drop_rel(rel_id)
-    prs.slides._sldIdLst.remove(slide_id)</pre>
-        </article>
-
-        <article class="snippet">
-          <h4>TAN/TAR/update_portfolio.py</h4>
-          <pre>for var_name, filename in templates.items():
-  with open(f"{template_dir}\\{filename}", 'r', encoding='utf-8') as f:
-    html = f.read()
-  html_escaped = html.replace('\\', '\\\\').replace('`', '\\`')
-  js_vars += f"const TMPL_{var_name} = `{html_escaped}`;\n"</pre>
-        </article>
-
-        <article class="snippet">
-          <h4>Apps Script Trigger</h4>
-          <pre>function onFormSubmit(e) {
-  const payload = normalizeSubmission(e);
-  appendQuizAttempt(payload);
-  upsertModuleProgress(payload);
-  upsertParcoursProgress(payload);
-  if (isEligibleForCertificate(payload.userEmail)) {
-    generateCertificatePdf(payload.userEmail);
-  }
-}</pre>
-        </article>
-
-      </div>
-
-      <div class="grid" style="margin-top:12px;">
-        <article class="card">
-          <span class="tag">Google Sites Evidence</span>
-          <h3 data-i18n="proofCard1Title">Sanitized screenshots</h3>
-          <p data-i18n="proofCard1Desc">The workspace includes screenshot pipelines in template assets (use-cases and captures). For client-facing confidentiality, visuals are exported with sensitive areas blurred.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Fil Rouge Innovation</span>
-          <h3 data-i18n="proofCard2Title">New assessment design approach</h3>
-          <p data-i18n="proofCard2Desc">Scenario-driven missions adapt to selected business perimeter and user intent, transforming passive quizzes into context-aware decision assessment.</p>
-        </article>
-      </div>
-
-      <div class="site-preview-grid">
-        <article class="site-preview-card">
-          <div class="site-preview-head">
-            <h3>Accueil Google Sites</h3>
-            <button type="button" data-modal="site-home">Ouvrir en grand</button>
-          </div>
-          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-home.png" alt="Google Sites home screenshot" /></div>
-          <p class="site-preview-caption">Page d'accueil de la plateforme de formation Carrefour avec le CTA Découvrir les parcours.</p>
-        </article>
-        <article class="site-preview-card">
-          <div class="site-preview-head">
-            <h3>Catalogue des parcours</h3>
-            <button type="button" data-modal="site-parcours">Ouvrir en grand</button>
-          </div>
-          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-parcours.png" alt="Parcours catalogue screenshot" /></div>
-          <p class="site-preview-caption">Vue catalogue des parcours ABG, Assort'impact et Store Adaptor.</p>
-        </article>
-        <article class="site-preview-card">
-          <div class="site-preview-head">
-            <h3>Parcours ABG</h3>
-            <button type="button" data-modal="site-abg">Ouvrir en grand</button>
-          </div>
-          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-abg.png" alt="Parcours ABG screenshot" /></div>
-          <p class="site-preview-caption">Parcours ABG avec le point d'entrée vers l'environnement de formation et les modules.</p>
-        </article>
-        <article class="site-preview-card">
-          <div class="site-preview-head">
-            <h3>Parcours Assort'impact</h3>
-            <button type="button" data-modal="site-assort">Ouvrir en grand</button>
-          </div>
-          <div class="site-preview-frame"><img class="site-preview-img" src="assets/media/site-assort.png" alt="Parcours Assort impact screenshot" /></div>
-          <p class="site-preview-caption">Parcours Assort'impact avec les supports de formation et les cas d'usage business.</p>
-        </article>
-      </div>
-
-    </section>
-
     <section id="services" class="reveal">
       <div class="section-head">
         <h2 data-i18n="servicesTitle">Services</h2>
@@ -1177,12 +1070,12 @@
       <div class="section-head">
         <h2 data-i18n="aboutTitle">About Me</h2>
       </div>
-      <p data-i18n="aboutText">I am ISLAM MKAOUAR, Tunisian and based in Paris. I combine product thinking, automation, and visual communication. Je suis rapide, orientee resultat, et j'apprends tres vite. My style is premium but human: I turn complex needs into simple systems and consistently go beyond expectations by designing not only what clients ask for, but also what they will need next.</p>
+      <p data-i18n="aboutText">I am ISLAM MKAOUAR, Tunisian and based in Paris. I combine product thinking, automation, and visual communication. I am fast, result-driven, and a very fast learner. My style is premium but human: I turn complex needs into simple systems and consistently go beyond expectations by designing not only what clients ask for, but also what they will need next.</p>
     </section>
 
     <section id="contact" class="cta reveal">
       <h2 data-i18n="contactTitle">Ready to launch your next project?</h2>
-      <p data-i18n="contactText">Besoin d'un workspace Google Sites, d'une automatisation Apps Script, ou d'un deck stratégique? Let's build it together.</p>
+      <p data-i18n="contactText">Need a Google Sites workspace, an Apps Script automation, or a strategic deck? Let's build it together.</p>
       <div class="contact-row">
         <a class="contact-chip" href="mailto:imkaouer@gmail.com">imkaouer@gmail.com</a>
         <a class="contact-chip" href="https://www.linkedin.com/in/islam-mkaouar-054a31226/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -1246,17 +1139,11 @@
         p5Title: "Finance Deck + Other Business Presentations",
         p5Desc: "A curated gallery of additional decks: finance project, business analysis narratives, and visual concepts built for impact.",
         p5Link1: "Open Finance Deck",
-        p5Link2: "Presentation Gallery",
+        p5Link2: "Project Gallery",
         p6Title: "AG Phone - Business Card Design",
         p6Desc: "Minimal dark-theme business card designed for a local phone shop in Tunis. Custom AG monogram logo, clean typographic hierarchy, print-ready layout.",
         p6Link1: "View Card",
         p6Link2: "Design Notes",
-        proofTitle: "Technical Proof",
-        proofSub: "No sensitive data, only sanitized architecture and code patterns.",
-        proofCard1Title: "Sanitized screenshots",
-        proofCard1Desc: "The workspace includes screenshot pipelines in template assets (use-cases and captures). For client-facing confidentiality, visuals are exported with sensitive areas blurred.",
-        proofCard2Title: "New assessment design approach",
-        proofCard2Desc: "Scenario-driven missions adapt to selected business perimeter and user intent, transforming passive quizzes into context-aware decision assessment.",
         servicesTitle: "Services",
         servicesSub: "Built for corporate teams, startups, agencies, and training organizations.",
         s1Title: "Google Sites Learning Platforms",
@@ -1270,7 +1157,7 @@
         e1Title: "Carrefour - Assistant Project Manager Intern",
         e1Desc: "Designed an internal training tool via Google Sites and Google Workspace, automated task flows, and contributed to faster delivery quality through data and AI-assisted workflows.",
         e2Title: "MI1 Master in Data & Finance (double degree)",
-        e2Desc: "Albert School Paris + Ecole des Mines Paris (PSL), with focus on data analysis, SQL, machine learning, business intelligence, and strategic marketing.",
+        e2Desc: "Albert School Paris + École des Mines Paris (PSL), with focus on data analysis, SQL, machine learning, business intelligence, and strategic marketing.",
         e3Title: "Support, Marketing, and Client Operations",
         e3Desc: "Professional experience across technical support, marketing communication, multilingual content, and customer operations in Tunisia and Europe.",
         e4Title: "Technical + Communication Edge",
@@ -1327,17 +1214,11 @@
         p5Title: "Deck finance + autres présentations business",
         p5Desc: "Une sélection de decks supplémentaires: projet finance, narratifs d'analyse business et concepts visuels orientés impact.",
         p5Link1: "Ouvrir le deck finance",
-        p5Link2: "Aperçu Google Sites",
+        p5Link2: "Galerie des présentations",
         p6Title: "AG Phone - Design de Carte de Visite",
         p6Desc: "Carte de visite minimaliste thème sombre conçue pour une boutique de téléphonie à Tunis. Logo monogramme AG sur mesure, hiérarchie typographique soignée, prête pour l'impression.",
         p6Link1: "Voir la carte",
         p6Link2: "Notes de design",
-        proofTitle: "Preuve technique",
-        proofSub: "Aucune donnée sensible, uniquement une architecture sanitisée et des patterns de code.",
-        proofCard1Title: "Captures sanitisées",
-        proofCard1Desc: "Le workspace inclut des pipelines de captures dans les assets templates (use-cases et captures). Côté client, les visuels sont exportés avec zones sensibles floutées.",
-        proofCard2Title: "Nouvelle approche d'évaluation",
-        proofCard2Desc: "Les missions scénario s'adaptent au périmètre business et à l'intention utilisateur, transformant des quiz passifs en évaluation contextuelle de décision.",
         servicesTitle: "Prestations",
         servicesSub: "Conçu pour les équipes corporate, startups, agences et organismes de formation.",
         s1Title: "Plateformes d'apprentissage Google Sites",
@@ -1367,8 +1248,8 @@
         o3b: "Collaboration équipe et itérations",
         o3c: "Mode retainer ou projet",
         aboutTitle: "À propos",
-        aboutText: "Je suis ISLAM MKAOUAR, tunisienne basée à Paris. Je combine product thinking, automatisation et communication visuelle. Je suis rapide, orientée résultat, et j'apprends très vite. Mon style est premium mais humain: je transforme des besoins complexes en systèmes simples, et je vais au-delà des attentes en concevant non seulement ce que les clients demandent, mais aussi ce dont ils auront besoin ensuite.",
-        contactTitle: "Prête à lancer votre prochain projet?",
+        aboutText: "Je suis ISLAM MKAOUAR, Tunisienne basée à Paris. Je combine product thinking, automatisation et communication visuelle. Je suis rapide, orientée résultat, et j'apprends très vite. Mon style est premium mais humain : je transforme des besoins complexes en systèmes simples, et je vais au-delà des attentes en concevant non seulement ce que les clients demandent, mais aussi ce dont ils auront besoin ensuite.",
+        contactTitle: "Prêt à lancer votre prochain projet ?",
         contactText: "Besoin d'un workspace Google Sites, d'une automatisation Apps Script ou d'un deck stratégique? Construisons-le ensemble.",
         footerText: "Designed and built by ISLAM MKAOUAR - 2026"
       }
@@ -1434,23 +1315,22 @@
   <div class="grid">
     <div><div class="chip">Accueil</div><p style="font-size:13px">Landing page with brand identity and entry CTAs</p></div>
     <div><div class="chip">Parcours</div><p style="font-size:13px">Catalog of 3 learning tracks with entry points</p></div>
-    <div><div class="chip">Module Pages</div><p style="font-size:13px">Per-parcours modules with resources and quiz access</p></div>
-    <div><div class="chip">Resources</div><p style="font-size:13px">Embedded Slides, Docs, and Sheets for lesson content</p></div>
+    <div><div class="chip">Parcours ABG</div><p style="font-size:13px">Category management modules and business cases</p></div>
+    <div><div class="chip">Parcours Assort'impact</div><p style="font-size:13px">Use cases and guided decision support</p></div>
   </div>
 </div>
 <div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Learning Tracks</h2>
+  <h2 style="font-size:18px;margin:0 0 8px">Website Screenshots</h2>
   <div class="grid">
-    <div><div class="chip">ABG</div><p style="font-size:13px">Assortiment Base Gestion: core category management methodology</p></div>
-    <div><div class="chip">Assort'impact</div><p style="font-size:13px">Business impact-driven assortment decisions with adaptive missions</p></div>
-    <div><div class="chip">Store Adaptor</div><p style="font-size:13px">Local adaptation of national assortment strategy</p></div>
-    <div><div class="chip">Fil Rouge</div><p style="font-size:13px">Capstone adaptive missions across all tracks</p></div>
+    <div><img src="assets/media/site-home.png" alt="Google Sites home page"><p style="font-size:13px">Home page</p></div>
+    <div><img src="assets/media/site-parcours.png" alt="Google Sites parcours catalogue"><p style="font-size:13px">Parcours catalogue</p></div>
+    <div><img src="assets/media/site-p01-abg.png" alt="Google Sites ABG page"><p style="font-size:13px">ABG page</p></div>
+    <div><img src="assets/media/site-p02-assortimpact.png" alt="Google Sites Assort impact page"><p style="font-size:13px">Assort'impact page</p></div>
   </div>
 </div>
 <div class="panel">
-  <h2 style="font-size:18px;margin:0 0 8px">Screenshots</h2>
-  <p>Page-level screenshots of the live Google Sites platform can be added here. The templates used to build each page are available in the workspace and can be shared on request.</p>
-  <p style="font-size:13px;color:#888;font-style:italic">The platform is an internal tool; direct access is not available publicly. Screenshots are provided for portfolio review only.</p>
+  <h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2>
+  <img src="assets/media/site-p03-store-adaptor.png" alt="Google Sites Store Adaptor page">
 </div>`
         );
         modalNote.textContent = "";
@@ -1548,6 +1428,10 @@
     <div><div class="chip">PARCOURS_PROGRESS</div><p style="font-size:13px">Rolled-up completion % per user per parcours, drives certificate eligibility</p></div>
     <div><div class="chip">CERTIFICATES_LOG</div><p style="font-size:13px">Audit trail of issued certificates: user, date, Drive file ID</p></div>
   </div>
+</div>
+<div class="panel">
+  <h2 style="font-size:18px;margin:0 0 8px">Certificate Output</h2>
+  <img src="assets/media/certificate-example.png" alt="Certificate example">
 </div>
 <div class="panel">
   <h2 style="font-size:18px;margin:0 0 8px">Main Entry Point</h2>
@@ -1723,9 +1607,9 @@
       } else if (kind === "p4-preview") {
         modalTitle.textContent = "CUPRA Storytelling Deck";
         modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.src = "https://drive.google.com/file/d/1KnAZdf4w3QED5qSAed5IaNqLUJQP1akG/preview";
-        modalNote.textContent = "CUPRA deck preview from Google Drive. If the embed is blocked, the deck is available directly via Google Drive.";
+        modalFrame.srcdoc = "";
+        modalFrame.src = "assets/decks/cupra-deck.pdf#view=FitH";
+        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
       } else if (kind === "p4-explainer") {
         modalTitle.textContent = "CUPRA Deck (How It Was Made)";
         modalFrame.style.display = "block";
@@ -1766,8 +1650,8 @@
         modalTitle.textContent = "Finance Deck Preview";
         modalFrame.style.display = "block";
         modalFrame.srcdoc = "";
-        modalFrame.src = "https://drive.google.com/file/d/1uVL7r5iFuv7D1jKrJYvmUC51umVGlItd/preview";
-        modalNote.textContent = "Finance deck preview from Google Drive. If Drive blocks embedding, open directly via Google Drive.";
+        modalFrame.src = "assets/decks/finance-deck.pdf#view=FitH";
+        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
       } else if (kind === "p5-explainer") {
         modalTitle.textContent = "Business Presentations (Gallery Overview)";
         modalFrame.style.display = "block";
@@ -1795,7 +1679,7 @@
 </div>
 <div class="panel">
   <h2 style="font-size:18px;margin:0 0 8px">Availability</h2>
-  <p>The Finance Deck is available for preview via Google Drive. Additional decks from the gallery can be shared on request.</p>
+  <p>The Finance Deck is now embedded directly as a PDF hosted in this portfolio repository. Additional decks from the gallery can be shared on request.</p>
 </div>`
         );
         modalNote.textContent = "";
@@ -1803,38 +1687,14 @@
         modalTitle.textContent = "Finance Deck Preview";
         modalFrame.style.display = "block";
         modalFrame.srcdoc = "";
-        modalFrame.src = "https://drive.google.com/file/d/1uVL7r5iFuv7D1jKrJYvmUC51umVGlItd/preview";
-        modalNote.textContent = "This deck opens in an iframe preview. If Drive blocks embedding, use the direct file link from your Google Drive permissions.";
-      } else if (kind === "site-home") {
-        modalTitle.textContent = "Google Sites Home";
-        modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Google Sites Home (Preview)", `<div class="panel"><img src="assets/media/site-home.png" alt="Google Sites home screenshot"></div>`);
-        modalNote.textContent = "";
-      } else if (kind === "site-parcours") {
-        modalTitle.textContent = "Parcours Catalogue";
-        modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours Catalogue (Preview)", `<div class="panel"><img src="assets/media/site-parcours.png" alt="Parcours catalogue screenshot"></div>`);
-        modalNote.textContent = "";
-      } else if (kind === "site-abg") {
-        modalTitle.textContent = "Parcours ABG";
-        modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours ABG (Preview)", `<div class="panel"><img src="assets/media/site-abg.png" alt="Parcours ABG screenshot"></div>`);
-        modalNote.textContent = "";
-      } else if (kind === "site-assort") {
-        modalTitle.textContent = "Parcours Assort'impact";
-        modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.srcdoc = makeDoc("Parcours Assort'impact (Preview)", `<div class="panel"><img src="assets/media/site-assort.png" alt="Parcours Assort impact screenshot"></div>`);
-        modalNote.textContent = "";
+        modalFrame.src = "assets/decks/finance-deck.pdf#view=FitH";
+        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
       } else if (kind === "cupra") {
         modalTitle.textContent = "CUPRA Storytelling Deck";
         modalFrame.style.display = "block";
-        modalFrame.src = "about:blank";
-        modalFrame.src = "https://drive.google.com/file/d/1KnAZdf4w3QED5qSAed5IaNqLUJQP1akG/preview";
-        modalNote.textContent = "CUPRA deck preview from Google Drive.";
+        modalFrame.srcdoc = "";
+        modalFrame.src = "assets/decks/cupra-deck.pdf#view=FitH";
+        modalNote.textContent = "Embedded local PDF from the portfolio repository.";
       } else if (kind === "workflow") {
         modalTitle.textContent = "Apps Script Workflow Overview";
         modalFrame.style.display = "block";
