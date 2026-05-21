@@ -233,6 +233,10 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .profile-photo {
@@ -276,6 +280,7 @@
       list-style: none;
       display: grid;
       gap: 10px;
+      width: 100%;
     }
 
     .hero-list li {
@@ -285,6 +290,7 @@
       padding: 10px;
       background: #fff;
       color: var(--ink-800);
+      text-align: center;
     }
 
     section {
@@ -318,11 +324,104 @@
       font-size: 0.9rem;
     }
 
+    .about .section-head {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about .section-head h2 {
+      width: 100%;
+    }
+
+    .about-intro {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .about-profile-card {
+      max-width: 860px;
+      margin: 0 auto;
+      border: 1px solid #d9ccba;
+      border-radius: 22px;
+      padding: 24px 24px 20px;
+      background: linear-gradient(180deg, #ffffff, #fbf6ee);
+      box-shadow: 0 14px 30px rgba(24, 30, 40, 0.09);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-profile-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .about-profile-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      right: -70px;
+      top: -70px;
+      background: radial-gradient(circle, rgba(15,118,110,0.15), rgba(15,118,110,0));
+      pointer-events: none;
+    }
+
     .about p {
       margin: 0;
       color: var(--ink-800);
       line-height: 1.68;
       max-width: 85ch;
+    }
+
+    .about-lead {
+      font-size: 1.05rem;
+      color: var(--ink-950);
+    }
+
+    .about-copy {
+      margin-top: 12px;
+    }
+
+    .about-profile-head {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #d7ccbe;
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 11px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: var(--ink-600);
+      margin-bottom: 10px;
+    }
+
+    .about-profile-head::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 3px rgba(15,118,110,0.14);
+    }
+
+    .about-profile-card .about-lead,
+    .about-profile-card .about-copy {
+      max-width: 70ch;
+    }
+
+    .about-snapshot {
+      margin-top: 18px;
     }
 
     .grid {
@@ -331,14 +430,65 @@
       gap: 14px;
     }
 
+    .experience-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 16px;
+    }
+
     .card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      background: linear-gradient(180deg, #fff, #fcfbf8);
+      border: 1px solid #ddd3c6;
+      border-radius: 18px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.9) 0 18%, rgba(255,255,255,0) 42%),
+        linear-gradient(180deg, #ffffff, #fbf6ee);
       display: flex;
       flex-direction: column;
       gap: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(21, 29, 36, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.8;
+    }
+
+    .card:hover,
+    .service:hover,
+    .offer:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(21, 29, 36, 0.12);
+      border-color: #cdbda9;
+    }
+
+    .card-tone-a {
+      background:
+        linear-gradient(180deg, #ffffff, #f5fcfb);
+    }
+
+    .card-tone-b {
+      background:
+        linear-gradient(180deg, #ffffff, #fff8f2);
+    }
+
+    .card-tone-c {
+      background:
+        linear-gradient(180deg, #ffffff, #f6f8ff);
+    }
+
+    .card-tone-d {
+      background:
+        linear-gradient(180deg, #ffffff, #f8f6ff);
     }
 
     .card .tag {
@@ -415,6 +565,11 @@
 
     .action-btn:hover { color: var(--accent-2); }
 
+    .card .actions {
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
     .services {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -422,10 +577,27 @@
     }
 
     .service {
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      border: 1px solid #ddd3c6;
+      border-radius: 18px;
       padding: 14px;
-      background: linear-gradient(180deg, #fff, #fcfaf6);
+      background:
+        radial-gradient(circle at 90% 12%, rgba(255,255,255,0.9) 0 18%, rgba(255,255,255,0) 42%),
+        linear-gradient(180deg, #ffffff, #fbf6ee);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(21, 29, 36, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.8;
     }
 
     .service h3 {
@@ -447,10 +619,27 @@
     }
 
     .offer {
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      border: 1px solid #ddd3c6;
+      border-radius: 18px;
       padding: 14px;
-      background: linear-gradient(180deg, #fff, #fefcf8);
+      background:
+        radial-gradient(circle at 90% 12%, rgba(255,255,255,0.9) 0 18%, rgba(255,255,255,0) 42%),
+        linear-gradient(180deg, #ffffff, #fbf6ee);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(21, 29, 36, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .offer::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.8;
     }
 
     .offer h3 {
@@ -767,6 +956,10 @@
         grid-template-columns: 1fr;
       }
 
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .grid {
         grid-template-columns: 1fr;
       }
@@ -807,6 +1000,10 @@
 
       .nav {
         justify-content: flex-start;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -860,50 +1057,70 @@
     <section id="experience" class="reveal">
       <div class="section-head">
         <h2 data-i18n="expTitle">Experience Snapshot</h2>
-        <p data-i18n="expSub">Selected highlights from my CV aligned with freelance value.</p>
       </div>
-      <div class="grid">
-        <article class="card">
+      <div class="grid experience-grid">
+        <article class="card card-tone-a">
           <span class="tag">Current Role</span>
           <h3 data-i18n="e1Title">Carrefour - Assistant Project Manager Intern</h3>
-          <p data-i18n="e1Desc">Designed an internal training tool via Google Sites and Google Workspace, automated task flows, and contributed to faster delivery quality through data and AI-assisted workflows.</p>
           <div class="pill-row">
             <span class="pill">Massy, France</span>
             <span class="pill">Google Workspace</span>
             <span class="pill">Automation</span>
           </div>
+          <div class="actions">
+            <button class="action-btn" type="button" data-modal="exp-carrefour" data-i18n="readMore">Read More</button>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-b">
+          <span class="tag">Education</span>
+          <h3 data-i18n="e5Title">Bachelor's in Business Administration</h3>
+          <div class="pill-row">
+            <span class="pill">Business Strategy</span>
+            <span class="pill">Operations</span>
+            <span class="pill">Project Coordination</span>
+          </div>
+          <div class="actions">
+            <button class="action-btn" type="button" data-modal="exp-bachelor" data-i18n="readMore">Read More</button>
+          </div>
+        </article>
+
+        <article class="card card-tone-c">
           <span class="tag">Education</span>
           <h3 data-i18n="e2Title">MI1 Master in Data & Finance (double degree)</h3>
-          <p data-i18n="e2Desc">Albert School Paris + Ecole des Mines Paris (PSL), with focus on data analysis, SQL, machine learning, business intelligence, and strategic marketing.</p>
           <div class="pill-row">
             <span class="pill">Data</span>
             <span class="pill">Finance</span>
             <span class="pill">Business Strategy</span>
           </div>
+          <div class="actions">
+            <button class="action-btn" type="button" data-modal="exp-master" data-i18n="readMore">Read More</button>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-d">
           <span class="tag">Previous Roles</span>
           <h3 data-i18n="e3Title">Support, Marketing, and Client Operations</h3>
-          <p data-i18n="e3Desc">Professional experience across technical support, marketing communication, multilingual content, and customer operations in Tunisia and Europe.</p>
           <div class="pill-row">
             <span class="pill">UPS</span>
             <span class="pill">MHTRADS</span>
             <span class="pill">B2B/B2C Ops</span>
           </div>
+          <div class="actions">
+            <button class="action-btn" type="button" data-modal="exp-ops" data-i18n="readMore">Read More</button>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-a">
           <span class="tag">Skills</span>
           <h3 data-i18n="e4Title">Technical + Communication Edge</h3>
-          <p data-i18n="e4Desc">Analysis (Python, SQL, Excel), digital marketing (SEO/SEM/Analytics), presentation writing, and high-clarity communication for stakeholders.</p>
           <div class="pill-row">
             <span class="pill">Python</span>
             <span class="pill">SQL</span>
             <span class="pill">Slides Storytelling</span>
+          </div>
+          <div class="actions">
+            <button class="action-btn" type="button" data-modal="exp-tech" data-i18n="readMore">Read More</button>
           </div>
         </article>
       </div>
@@ -912,20 +1129,74 @@
       <div class="section-head">
         <h2 data-i18n="aboutTitle">About Me</h2>
       </div>
-      <p data-i18n="aboutText">I am ISLAM MKAOUAR, Tunisian and based in Paris. I combine product thinking, automation, and visual communication to turn complex operational needs into clear, high-impact systems.</p>
-      <p data-i18n="aboutText2" style="margin-top: 12px;">My approach is both strategic and execution-focused: I design scalable learning experiences, build reliable automations, and craft decision-ready narratives that help teams move faster with confidence.</p>
+      <div class="about-intro about-profile-card">
+        <div class="about-profile-head" data-i18n="aboutCardHead">Profile Summary</div>
+        <p class="about-lead" data-i18n="aboutText">I’m ISLAM MKAOUAR, a Tunisian freelancer based in Paris. I build learning platforms, automation systems, and executive decks for teams that need work delivered fast, clean, and with precision.</p>
+        <p class="about-copy" data-i18n="aboutText2">My style is practical and personal: I stay calm under pressure, learn fast, care about the details, and like to challenge a brief until it becomes something sharper. I work best when the pace is high and the problem needs a fresh angle.</p>
+        <div class="actions" style="justify-content:flex-start; margin-top: 10px;">
+          <button class="action-btn" type="button" data-modal="about-profile" data-i18n="readMore">Read More</button>
+        </div>
+      </div>
+      <div class="grid about-snapshot">
+        <article class="card card-tone-a">
+          <span class="tag" data-i18n="aboutCard1Tag">Skills</span>
+          <h3 data-i18n="aboutCard1Title">Skills that ship</h3>
+          <p data-i18n="aboutCard1Desc">SQL, Python, AI tools, Excel, Word, Microsoft 365, and Google Workspace, plus project management and Agile execution. I connect strategy with delivery.</p>
+          <div class="pill-row">
+            <span class="pill">Google Sites</span>
+            <span class="pill">Apps Script</span>
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+          </div>
+        </article>
+
+        <article class="card card-tone-b">
+          <span class="tag" data-i18n="aboutCard2Tag">Languages</span>
+          <h3 data-i18n="aboutCard2Title">Multilingual by default</h3>
+          <p data-i18n="aboutCard2Desc">FR C2, EN C2, AR C2, DE B2. I move comfortably between multilingual teams, clients, and audiences.</p>
+          <div class="pill-row">
+            <span class="pill">FR C2</span>
+            <span class="pill">EN C2</span>
+            <span class="pill">AR C2</span>
+            <span class="pill">DE B2</span>
+          </div>
+        </article>
+
+        <article class="card card-tone-c">
+          <span class="tag" data-i18n="aboutCard3Tag">Education & Certifications</span>
+          <h3 data-i18n="aboutCard3Title">Business administration, data, and automation</h3>
+          <p data-i18n="aboutCard3Desc">I hold a bachelor's degree in Business Administration, alongside data and finance training, Apps Script automation systems, and continuous learning across digital tools, analytics, and AI-assisted workflows.</p>
+          <div class="pill-row">
+            <span class="pill">Data & Finance</span>
+            <span class="pill">Apps Script</span>
+            <span class="pill">Analytics</span>
+            <span class="pill">AI Tools</span>
+          </div>
+        </article>
+
+        <article class="card card-tone-d">
+          <span class="tag" data-i18n="aboutCard4Tag">Work Style</span>
+          <h3 data-i18n="aboutCard4Title">Pressure is part of the job</h3>
+          <p data-i18n="aboutCard4Desc">I stay calm under pressure, learn quickly, sweat the details, and enjoy being challenged. Professional and volunteering experiences taught me to adapt fast and think outside the box.</p>
+          <div class="pill-row">
+            <span class="pill">Under Pressure</span>
+            <span class="pill">Fast Learner</span>
+            <span class="pill">Detail Oriented</span>
+            <span class="pill">Problem Solver</span>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="skills" class="reveal">
       <div class="section-head">
         <h2 data-i18n="skillsTitle">Core Skills</h2>
-        <p data-i18n="skillsSub">The capabilities I use to deliver end-to-end freelance outcomes.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card card-tone-a">
           <span class="tag" data-i18n="sk1Tag">Learning Platforms</span>
           <h3 data-i18n="sk1Title">LMS Design and Structured Learning Journeys</h3>
-          <p data-i18n="sk1Desc">I design and build Google Sites learning environments with clear architecture, intuitive navigation, and practical module flows for real adoption.</p>
+          <p data-i18n="sk1Desc">I design and build Google Sites learning environments with clear architecture, intuitive navigation, practical module flows, and full Google Workspace integration.</p>
           <div class="pill-row">
             <span class="pill">Google Sites</span>
             <span class="pill">UX Structure</span>
@@ -933,10 +1204,10 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-b">
           <span class="tag" data-i18n="sk2Tag">Automation</span>
           <h3 data-i18n="sk2Title">Apps Script Workflows and Data Reliability</h3>
-          <p data-i18n="sk2Desc">I automate critical processes from input collection to reporting and certificate delivery, with robust tracking and maintainable logic.</p>
+          <p data-i18n="sk2Desc">I automate critical processes from input collection to reporting and certificate delivery, using SQL/Python logic, AI-assisted workflows, and maintainable tracking systems.</p>
           <div class="pill-row">
             <span class="pill">Apps Script</span>
             <span class="pill">Google Workspace</span>
@@ -944,10 +1215,10 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-c">
           <span class="tag" data-i18n="sk3Tag">Communication</span>
           <h3 data-i18n="sk3Title">Business Storytelling and Executive Decks</h3>
-          <p data-i18n="sk3Desc">I transform analysis into persuasive narratives, combining strong writing with visual clarity for executive audiences and decision-making contexts.</p>
+          <p data-i18n="sk3Desc">I transform analysis into persuasive narratives, combining strong writing with visual clarity in PowerPoint, Word, and executive-ready communication.</p>
           <div class="pill-row">
             <span class="pill">Storytelling</span>
             <span class="pill">Slide Design</span>
@@ -955,10 +1226,10 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card card-tone-d">
           <span class="tag" data-i18n="sk4Tag">Execution</span>
           <h3 data-i18n="sk4Title">Fast Delivery with Cross-Functional Collaboration</h3>
-          <p data-i18n="sk4Desc">I work quickly, communicate clearly, and align technical work with business priorities to deliver polished outcomes with minimal friction.</p>
+          <p data-i18n="sk4Desc">I work quickly, communicate clearly, and align technical work with business priorities through project management discipline and an Agile approach.</p>
           <div class="pill-row">
             <span class="pill">Project Ownership</span>
             <span class="pill">Stakeholder Communication</span>
@@ -1037,15 +1308,15 @@
         s3Title: "Executive Decks & Narrative Writing",
         s3Desc: "Clear story arcs, premium visual polish, and strong writing in multilingual contexts for strategic presentations.",
         expTitle: "Experience Snapshot",
-        expSub: "Selected highlights from my CV aligned with freelance value.",
         e1Title: "Carrefour - Assistant Project Manager Intern",
-        e1Desc: "Designed an internal training tool via Google Sites and Google Workspace, automated task flows, and contributed to faster delivery quality through data and AI-assisted workflows.",
+        e1Desc: "Built and optimized internal training workflows with Google Sites and Google Workspace.",
         e2Title: "MI1 Master in Data & Finance (double degree)",
-        e2Desc: "Albert School Paris + École des Mines Paris (PSL), with focus on data analysis, SQL, machine learning, business intelligence, and strategic marketing.",
+        e2Desc: "Double degree in Data and Finance focused on analytics, SQL, ML, BI, and strategic marketing.",
         e3Title: "Support, Marketing, and Client Operations",
-        e3Desc: "Professional experience across technical support, marketing communication, multilingual content, and customer operations in Tunisia and Europe.",
+        e3Desc: "Cross-functional experience in support, marketing communication, and client operations.",
         e4Title: "Technical + Communication Edge",
-        e4Desc: "Analysis (Python, SQL, Excel), digital marketing (SEO/SEM/Analytics), presentation writing, and high-clarity communication for stakeholders.",
+        e4Desc: "SQL, Python, AI tools, Microsoft 365, Google Workspace, and Agile project execution.",
+        readMore: "Read More",
         offersTitle: "Freelance Offers",
         o1a: "1 focused deliverable (page, script, or mini deck)",
         o1b: "Fast turnaround (3-5 days)",
@@ -1057,22 +1328,36 @@
         o3b: "Team collaboration and iterations",
         o3c: "Retainer or project-based model",
         aboutTitle: "About Me",
-        aboutText: "I am ISLAM MKAOUAR, Tunisian and based in Paris. I combine product thinking, automation, and visual communication to turn complex operational needs into clear, high-impact systems.",
-        aboutText2: "My approach is both strategic and execution-focused: I design scalable learning experiences, build reliable automations, and craft decision-ready narratives that help teams move faster with confidence.",
+        aboutCardHead: "Profile Summary",
+        aboutText: "I’m ISLAM MKAOUAR, a Tunisian freelancer based in Paris. I build learning platforms, automation systems, and executive decks for teams that need work delivered fast, clean, and with precision.",
+        aboutText2: "My style is practical and personal: I stay calm under pressure, learn fast, care about the details, and like to challenge a brief until it becomes something sharper. I work best when the pace is high and the problem needs a fresh angle.",
+        aboutCard1Tag: "Skills",
+        aboutCard1Title: "Skills that ship",
+        aboutCard1Desc: "SQL, Python, AI tools, Excel, Word, Microsoft 365, and Google Workspace, plus project management and Agile execution. I connect strategy with delivery.",
+        aboutCard2Tag: "Languages",
+        aboutCard2Title: "Multilingual by default",
+        aboutCard2Desc: "FR C2, EN C2, AR C2, DE B2. I move comfortably between multilingual teams, clients, and audiences.",
+        aboutCard3Tag: "Education & Certifications",
+        aboutCard3Title: "Data, automation, and continuous learning",
+        aboutCard3Desc: "I keep building on data and finance training, Apps Script automation systems, and continuous learning across digital tools, analytics, and AI-assisted workflows.",
+        aboutCard4Tag: "Work Style",
+        aboutCard4Title: "Pressure is part of the job",
+        aboutCard4Desc: "I stay calm under pressure, learn quickly, sweat the details, and enjoy being challenged. Professional and volunteering experiences taught me to adapt fast and think outside the box.",
+        e5Title: "Bachelor's in Business Administration",
+        e5Desc: "Business administration foundation in strategy, operations, and project coordination.",
         skillsTitle: "Core Skills",
-        skillsSub: "The capabilities I use to deliver end-to-end freelance outcomes.",
         sk1Tag: "Learning Platforms",
         sk1Title: "LMS Design and Structured Learning Journeys",
-        sk1Desc: "I design and build Google Sites learning environments with clear architecture, intuitive navigation, and practical module flows for real adoption.",
+        sk1Desc: "I design and build Google Sites learning environments with clear architecture, intuitive navigation, practical module flows, and full Google Workspace integration.",
         sk2Tag: "Automation",
         sk2Title: "Apps Script Workflows and Data Reliability",
-        sk2Desc: "I automate critical processes from input collection to reporting and certificate delivery, with robust tracking and maintainable logic.",
+        sk2Desc: "I automate critical processes from input collection to reporting and certificate delivery, using SQL/Python logic, AI-assisted workflows, and maintainable tracking systems.",
         sk3Tag: "Communication",
         sk3Title: "Business Storytelling and Executive Decks",
-        sk3Desc: "I transform analysis into persuasive narratives, combining strong writing with visual clarity for executive audiences and decision-making contexts.",
+        sk3Desc: "I transform analysis into persuasive narratives, combining strong writing with visual clarity in PowerPoint, Word, and executive-ready communication.",
         sk4Tag: "Execution",
         sk4Title: "Fast Delivery with Cross-Functional Collaboration",
-        sk4Desc: "I work quickly, communicate clearly, and align technical work with business priorities to deliver polished outcomes with minimal friction.",
+        sk4Desc: "I work quickly, communicate clearly, and align technical work with business priorities through project management discipline and an Agile approach.",
         contactTitle: "Ready to launch your next project?",
         contactText: "Need a Google Sites workspace, an Apps Script automation, or a strategic deck? Let's build it together.",
         footerText: "Designed and built by ISLAM MKAOUAR - 2026",
@@ -1130,15 +1415,15 @@
         s3Title: "Decks exécutifs et écriture narrative",
         s3Desc: "Story arcs clairs, polish visuel premium et écriture impactante en contexte multilingue.",
         expTitle: "Parcours",
-        expSub: "Highlights de mon CV alignés avec la valeur freelance.",
         e1Title: "Carrefour - Stagiaire Assistante Manager de Projet",
-        e1Desc: "Conception d'un outil de formation interne via Google Sites et Google Workspace, automatisation de tâches et accélération de la qualité de delivery via data et IA.",
+        e1Desc: "Conception et optimisation de workflows de formation internes avec Google Sites et Google Workspace.",
         e2Title: "Master MI1 Data & Finance (double diplôme)",
-        e2Desc: "Albert School Paris + École des Mines Paris (PSL), avec focus analyse de données, SQL, machine learning, business intelligence et marketing stratégique.",
+        e2Desc: "Double diplôme Data et Finance orienté analyse, SQL, ML, BI et marketing stratégique.",
         e3Title: "Support, marketing et opérations client",
-        e3Desc: "Expérience professionnelle en support technique, communication marketing, contenu multilingue et opérations client en Tunisie et en Europe.",
+        e3Desc: "Expérience transverse en support, communication marketing et opérations client.",
         e4Title: "Edge technique + communication",
-        e4Desc: "Analyse (Python, SQL, Excel), marketing digital (SEO/SEM/Analytics), écriture de présentations et communication claire avec les parties prenantes.",
+        e4Desc: "SQL, Python, outils IA, Microsoft 365, Google Workspace et exécution de projets en Agile.",
+        readMore: "En savoir plus",
         offersTitle: "Offres freelance",
         o1a: "1 livrable cible (page, script ou mini deck)",
         o1b: "Délai rapide (3-5 jours)",
@@ -1150,22 +1435,36 @@
         o3b: "Collaboration équipe et itérations",
         o3c: "Mode retainer ou projet",
         aboutTitle: "À propos",
-        aboutText: "Je suis ISLAM MKAOUAR, Tunisienne basée à Paris. Je combine product thinking, automatisation et communication visuelle pour transformer des besoins opérationnels complexes en systèmes clairs et à fort impact.",
-        aboutText2: "Mon approche est à la fois stratégique et orientée exécution : je conçois des expériences d'apprentissage scalables, je construis des automatisations fiables, et je crée des narratifs prêts pour la décision.",
+        aboutCardHead: "Résumé du profil",
+        aboutText: "Je suis ISLAM MKAOUAR, une freelance tunisienne basée à Paris. Je construis des plateformes d’apprentissage, des systèmes d’automatisation et des decks exécutifs pour des équipes qui ont besoin d’un travail livré vite, propre et avec précision.",
+        aboutText2: "Mon style est concret et personnel: je reste calme sous pression, j’apprends vite, je fais attention aux détails et j’aime pousser un brief jusqu’à ce qu’il devienne plus fort. Je travaille mieux quand le rythme est élevé et que le problème demande un angle neuf.",
+        aboutCard1Tag: "Compétences",
+        aboutCard1Title: "Des compétences qui livrent",
+        aboutCard1Desc: "SQL, Python, outils IA, Excel, Word, Microsoft 365 et Google Workspace, avec gestion de projet et exécution Agile. Je relie stratégie et delivery.",
+        aboutCard2Tag: "Langues",
+        aboutCard2Title: "Multilingue par défaut",
+        aboutCard2Desc: "FR C2, EN C2, AR C2, DE B2. Je navigue facilement entre équipes, clients et publics multilingues.",
+        aboutCard3Tag: "Formation & certifications",
+        aboutCard3Title: "Data, automatisation et apprentissage continu",
+        aboutCard3Desc: "Je continue de développer mes compétences à travers la data et la finance, les systèmes d’automatisation Apps Script et un apprentissage continu des outils digitaux, de l’analytics et des workflows assistés par IA.",
+        aboutCard4Tag: "Manière de travailler",
+        aboutCard4Title: "La pression fait partie du job",
+        aboutCard4Desc: "Je reste calme sous pression, j’apprends vite, je suis très attentive aux détails et j’aime être challengée. Mes expériences pro et bénévoles m’ont appris à m’adapter vite et à penser hors cadre.",
+        e5Title: "Bachelor en Business Administration",
+        e5Desc: "Base solide en administration des affaires, stratégie, opérations et coordination de projet.",
         skillsTitle: "Compétences clés",
-        skillsSub: "Les capacités que je mobilise pour livrer des résultats freelance de bout en bout.",
         sk1Tag: "Plateformes d'apprentissage",
         sk1Title: "Design LMS et parcours pédagogiques structurés",
-        sk1Desc: "Je conçois et construis des environnements Google Sites avec une architecture claire, une navigation intuitive et des modules pensés pour une adoption réelle.",
+        sk1Desc: "Je conçois et construis des environnements Google Sites avec une architecture claire, une navigation intuitive, des modules pratiques et une intégration complète Google Workspace.",
         sk2Tag: "Automatisation",
         sk2Title: "Workflows Apps Script et fiabilité de la donnée",
-        sk2Desc: "J'automatise les processus critiques de la collecte d'inputs jusqu'au reporting et à la livraison des certificats, avec un suivi robuste et une logique maintenable.",
+        sk2Desc: "J'automatise les processus critiques de la collecte d'inputs jusqu'au reporting et à la livraison des certificats, avec logique SQL/Python, workflows IA-assistés et suivi maintenable.",
         sk3Tag: "Communication",
         sk3Title: "Storytelling business et decks exécutifs",
-        sk3Desc: "Je transforme l'analyse en narratifs convaincants, en combinant qualité rédactionnelle et clarté visuelle pour des audiences décisionnelles.",
+        sk3Desc: "Je transforme l'analyse en narratifs convaincants, en combinant qualité rédactionnelle et clarté visuelle sur PowerPoint, Word et supports exécutifs.",
         sk4Tag: "Exécution",
         sk4Title: "Delivery rapide et collaboration transverse",
-        sk4Desc: "Je travaille vite, je communique avec clarté et j'aligne l'exécution technique avec les priorités business pour livrer des résultats premium.",
+        sk4Desc: "Je travaille vite, je communique avec clarté et j'aligne l'exécution technique avec les priorités business via une gestion de projet structurée et une approche Agile.",
         contactTitle: "Prêt à lancer votre prochain projet ?",
         contactText: "Besoin d'un workspace Google Sites, d'une automatisation Apps Script ou d'un deck stratégique? Construisons-le ensemble.",
         footerText: "Conçu et réalisé par ISLAM MKAOUAR - 2026",
@@ -1209,15 +1508,24 @@
 
     function makeDoc(title, body, note = "") {
       return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
-        body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f7f4ef;color:#121316}
+        body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#f8f4ee,#f2ede5);color:#121316}
         .wrap{max-width:980px;margin:0 auto;padding:24px}
-        h1{font-size:28px;margin:0 0 12px;font-family:Georgia,serif}
+        h1{font-size:28px;margin:0 0 14px;font-family:Georgia,serif;letter-spacing:-0.01em}
         p,li{line-height:1.6}
         .chip{display:inline-block;border:1px solid #d8d0c3;border-radius:999px;padding:4px 10px;margin:0 8px 8px 0;font-size:12px;background:#fff}
-        .panel{background:#fff;border:1px solid #e4dccf;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(0,0,0,.05);margin-top:16px}
+        .panel{background:linear-gradient(180deg,#fff,#fbf6ee);border:1px solid #ddd3c6;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(21,29,36,.08);margin-top:16px;position:relative;overflow:hidden}
+        .panel:before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,#0f766e,#f97316);opacity:.8}
+        .modal-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+        .modal-card{background:linear-gradient(180deg,#fff,#f7fbfb);border:1px solid #e0d9ce;border-radius:14px;padding:14px;position:relative;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.04)}
+        .modal-card:before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,#0f766e,#f97316)}
+        .modal-card h3{margin:0 0 8px;font-size:16px}
+        .modal-card ul{margin:0;padding-left:18px}
+        .modal-card li{margin-bottom:6px}
+        .modal-card p{margin:0;line-height:1.6}
         .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
         img{max-width:100%;border-radius:14px;border:1px solid #e5e1d7;display:block}
         pre{background:#111820;color:#e7eefb;padding:14px;border-radius:14px;overflow:auto;font-size:13px;line-height:1.5}
+        @media(max-width:820px){.modal-card-grid{grid-template-columns:1fr}}
         @media(max-width:800px){.grid{grid-template-columns:1fr}}
       </style><base href="${escapeHtml(document.baseURI)}"></head><body><div class="wrap"><h1>${escapeHtml(title)}</h1>${body}${note ? `<div class="panel"><strong>Note</strong><p>${escapeHtml(note)}</p></div>` : ""}</div></body></html>`;
     }
@@ -1233,10 +1541,52 @@
       const lang = document.documentElement.lang === "fr" ? "fr" : "en";
       const L = {
         en: {
+          expCarrefourTitle: "Carrefour - Role Details",
+          expCarrefourDocTitle: "Carrefour - Assistant Project Manager Intern",
+          expCarrefourBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Snapshot</h2><p>Built and optimized internal training workflows with Google Sites and Google Workspace.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Scope</h2><ul><li>Built and maintained a Google Sites learning platform for category management training.</li><li>Structured module pages, resource navigation, and learner pathways.</li><li>Coordinated content and delivery priorities with business stakeholders.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Execution Highlights</h2><ul><li>Automated repetitive delivery tasks across Google Workspace tools.</li><li>Improved consistency of training assets and publication workflows.</li><li>Contributed to faster update cycles with data-driven and AI-assisted methods.</li></ul></div>`,
+          expMasterTitle: "Master Degree - Courses and Focus",
+          expMasterDocTitle: "MI1 Master in Data & Finance (Double Degree)",
+          expMasterBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Snapshot</h2><p>Double degree in Data and Finance focused on analytics, SQL, ML, BI, and strategic marketing.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Institutions</h2><p>Albert School Paris + Ecole des Mines Paris (PSL).</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Relevant Courses</h2><ul><li>Data Analysis and Applied Statistics</li><li>SQL and Data Modeling</li><li>Machine Learning Fundamentals</li><li>Business Intelligence and Dashboarding</li><li>Corporate Finance and Financial Analysis</li><li>Strategic Marketing and Market Analysis</li><li>Decision-Making with Data</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Outcome</h2><p>Strong bridge between quantitative analysis, business strategy, and practical decision support.</p></div>`,
+          expBachelorTitle: "Bachelor Degree - Courses and Foundation",
+          expBachelorDocTitle: "Bachelor in Business Administration",
+          expBachelorBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Snapshot</h2><p>Business administration foundation in strategy, operations, and project coordination.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Academic Foundation</h2><p>This degree built my managerial and operational core before specializing in data and automation.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Relevant Courses</h2><ul><li>Principles of Management</li><li>Marketing Fundamentals</li><li>Business Strategy</li><li>Operations Management</li><li>Project Management</li><li>Accounting and Financial Management</li><li>Organizational Behavior and Communication</li><li>Business Law and Corporate Environment</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">How It Helps Today</h2><p>It gives me a structured business lens to prioritize impact, stakeholders, and execution quality.</p></div>`,
+          expOpsTitle: "Support, Marketing, and Client Operations",
+          expOpsDocTitle: "Cross-Functional Operations Experience",
+          expOpsBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Snapshot</h2><p>Cross-functional experience in support, marketing communication, and client operations.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Responsibilities Across Roles</h2><ul><li>Technical support and issue resolution in client-facing contexts.</li><li>Marketing communication and multilingual content work.</li><li>Operational follow-up for B2B and B2C customer processes.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Professional Value</h2><p>These experiences strengthened adaptability, service quality, and end-to-end coordination in fast-moving teams.</p></div>`,
+          expTechTitle: "Technical + Communication Edge",
+          expTechDocTitle: "Core Technical and Communication Stack",
+          expTechBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Snapshot</h2><p>SQL, Python, AI tools, Microsoft 365, Google Workspace, and Agile project execution.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Technical Skills</h2><ul><li>Python, SQL, and Excel for analysis and automation.</li><li>Analytics and reporting for business monitoring.</li><li>Google Workspace implementation for practical delivery.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Communication Skills</h2><ul><li>Executive presentation writing and slide storytelling.</li><li>Clear stakeholder communication in multilingual settings.</li><li>Translating technical detail into business decisions.</li></ul></div>`,
+          aboutProfileTitle: "About Me - Detailed Profile",
+          aboutProfileDocTitle: "Professional Profile",
+          aboutProfileBody: `<div class="panel"><p>Tunisian freelancer based in Paris, focused on learning platforms, automation systems, and executive storytelling assets.</p><p>My approach combines speed, structure, and precision: I quickly understand the objective, map the workflow, and deliver polished outputs aligned with business constraints.</p></div><div class="modal-card-grid"><article class="modal-card"><h3>Skills and Delivery Stack</h3><ul><li>SQL, Python, and AI tools for analysis and productivity</li><li>Excel, Word, and the full Microsoft 365 suite</li><li>Google Workspace and Google Sites for collaboration and LMS delivery</li><li>Executive decks, reporting, and business storytelling</li></ul></article><article class="modal-card"><h3>Project and Agile Capabilities</h3><ul><li>Project management planning, prioritization, and follow-up</li><li>Agile approach with iterative delivery and fast feedback loops</li><li>Cross-functional coordination with clear milestones and ownership</li></ul></article><article class="modal-card"><h3>Languages and Collaboration</h3><ul><li>French C2, English C2, Arabic C2, German B2</li><li>Comfortable in multilingual client and team environments</li><li>Clear stakeholder communication from technical to executive level</li></ul></article><article class="modal-card"><h3>Continuous Learning</h3><ul><li>Regular upskilling through practical data and automation projects</li><li>Applied AI-assisted workflows for faster, high-quality delivery</li><li>Strong adaptation to new tools, contexts, and business needs</li></ul></article></div>`,
+          aboutSkillsTitle: "Skills That Ship - Expanded",
+          aboutSkillsDocTitle: "Skills - End-to-End Delivery",
+          aboutSkillsBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Build Stack</h2><ul><li>Google Sites architecture and UX-friendly learning structures</li><li>Apps Script automation for forms, progress, certificates, and reporting</li><li>Python/SQL/Excel for analysis and data preparation</li><li>Executive deck design and narrative writing</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Working Principle</h2><p>I connect strategy and execution in one workflow, so ideas become delivered systems, not just plans.</p></div>`,
+          aboutLanguagesTitle: "Languages - Expanded",
+          aboutLanguagesDocTitle: "Multilingual Capability",
+          aboutLanguagesBody: `<div class="panel"><ul><li>French: C2</li><li>English: C2</li><li>Arabic: C2</li><li>German: B2</li></ul><p>I can facilitate communication, content, and delivery across multilingual teams and international stakeholders.</p></div>`,
+          aboutEducationTitle: "Education and Certifications - Expanded",
+          aboutEducationDocTitle: "Education, Courses, and Continuous Learning",
+          aboutEducationBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Bachelor in Business Administration</h2><ul><li>Management, operations, finance, marketing, and project coordination</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Master in Data & Finance</h2><ul><li>Data analysis, SQL, machine learning, BI, and strategic marketing</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Continuous Learning</h2><p>Ongoing practice with Apps Script automation, analytics tooling, and AI-assisted production workflows.</p></div>`,
+          aboutWorkstyleTitle: "Work Style - Expanded",
+          aboutWorkstyleDocTitle: "How I Work",
+          aboutWorkstyleBody: `<div class="panel"><ul><li>Calm and reliable under pressure</li><li>Fast learner in new domains and tools</li><li>Detail-oriented with quality control mindset</li><li>Constructive challenger of briefs to improve outcomes</li></ul><p>I value clear deadlines, transparent communication, and practical solutions that scale.</p></div>`,
+          skillPlatformTitle: "LMS Design - Expanded",
+          skillPlatformDocTitle: "Learning Platform Design",
+          skillPlatformBody: `<div class="panel"><p>I design structured LMS journeys with clear architecture, page templates, and practical learner navigation to improve completion and adoption.</p></div>`,
+          skillAutomationTitle: "Automation - Expanded",
+          skillAutomationDocTitle: "Apps Script Automation",
+          skillAutomationBody: `<div class="panel"><p>I build reliable workflows across Forms, Sheets, Slides, Drive, and Gmail, including tracking, audit logs, and maintainable handover-ready logic.</p></div>`,
+          skillStoryTitle: "Business Storytelling - Expanded",
+          skillStoryDocTitle: "Executive Communication",
+          skillStoryBody: `<div class="panel"><p>I transform analysis into executive-ready narratives with a clear storyline, concise messaging, and visual hierarchy that supports decisions.</p></div>`,
+          skillExecutionTitle: "Execution - Expanded",
+          skillExecutionDocTitle: "Delivery Model",
+          skillExecutionBody: `<div class="panel"><p>I combine fast delivery with cross-functional alignment: clear milestones, rapid feedback loops, and high-finish outputs ready for production use.</p></div>`,
           embeddedPdf: "",
           p1PreviewTitle: "Google Sites LMS (Platform Preview)",
           p1PreviewDocTitle: "Google Sites LMS (Platform Overview)",
-          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Platform Structure</h2><p>The LMS is built as a 4-level hierarchy in Google Sites for enterprise category management training.</p><div class="grid"><div><div class="chip">Home</div><p style="font-size:13px">Entry page with platform identity and CTAs</p></div><div><div class="chip">Tracks</div><p style="font-size:13px">Catalog of learning tracks</p></div><div><div class="chip">Modules</div><p style="font-size:13px">Per-track module pages and resources</p></div><div><div class="chip">Assessments</div><p style="font-size:13px">Quizzes and adaptive missions</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Website Screenshots</h2><div class="grid"><div><img src="assets/media/site-home.png" alt="Google Sites home page"><p style="font-size:13px">Home page</p></div><div><img src="assets/media/site-parcours.png" alt="Google Sites tracks"><p style="font-size:13px">Tracks catalog</p></div><div><img src="assets/media/site-p01-abg.png" alt="Google Sites ABG page"><p style="font-size:13px">ABG page</p></div><div><img src="assets/media/site-p02-assortimpact.png" alt="Google Sites Assort impact page"><p style="font-size:13px">Assort'impact page</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2><img src="assets/media/site-p03-store-adaptor.png" alt="Google Sites Store Adaptor page"></div>`,
+          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Platform Structure</h2><p>The LMS is built as a 4-level hierarchy in Google Sites for enterprise category management training.</p><div class="grid"><div><div class="chip">Layer 1</div><p style="font-size:13px">Main entry and navigation</p></div><div><div class="chip">Layer 2</div><p style="font-size:13px">Learning track catalog</p></div><div><div class="chip">Layer 3</div><p style="font-size:13px">Module pages and resources</p></div><div><div class="chip">Layer 4</div><p style="font-size:13px">Assessments and missions</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Website Screenshots</h2><div class="grid"><div><img src="assets/media/site-parcours-blur.png" alt="Google Sites tracks"><p style="font-size:13px">Tracks catalog</p></div><div><img src="assets/media/site-p01-abg-blur.png" alt="Google Sites ABG page"><p style="font-size:13px">Module page</p></div><div><img src="assets/media/site-p02-assortimpact-blur.png" alt="Google Sites Assort impact page"><p style="font-size:13px">Module page</p></div><div><img src="assets/media/site-p03-storeadaptor-blur.png" alt="Google Sites Store Adaptor page"><p style="font-size:13px">Store Adaptor page</p></div></div></div>`,
           p1ExplainerTitle: "Google Sites LMS (Case Study)",
           p1ExplainerDocTitle: "Google Sites LMS (Carrefour Learning Platform)",
           p1ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Context</h2><p>Internal onboarding and learning content were fragmented. The objective was to centralize training in a premium self-serve LMS built only with Google Workspace tools.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Delivery</h2><ul><li>4-level information architecture (Home, Tracks, Modules, Resources)</li><li>Custom HTML/CSS templates embedded in Google Sites</li><li>Business use-case pages and practical learning flow</li><li>Reusable structure for fast rollout of future tracks</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Faster onboarding with clear learning navigation</li><li>No external stack required</li><li>Scalable and maintainable template system</li></ul></div>`,
@@ -1280,10 +1630,52 @@
           missionBody: `<div class="panel"><p>Scenario-based adaptive assessment where context and decision paths change based on role and business perimeter.</p></div>`
         },
         fr: {
+          expCarrefourTitle: "Carrefour - Détails du rôle",
+          expCarrefourDocTitle: "Carrefour - Stagiaire Assistante Manager de Projet",
+          expCarrefourBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résumé</h2><p>Conception et optimisation de workflows de formation internes avec Google Sites et Google Workspace.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Périmètre</h2><ul><li>Conception et maintenance d'une plateforme d'apprentissage Google Sites pour la formation category management.</li><li>Structuration des pages modules, de la navigation ressources et des parcours apprenants.</li><li>Coordination des priorités contenu/delivery avec les parties prenantes business.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Points forts d'exécution</h2><ul><li>Automatisation de tâches répétitives via Google Workspace.</li><li>Amélioration de la cohérence des assets de formation et des workflows de publication.</li><li>Accélération des cycles de mise à jour via des méthodes data-driven et IA-assistées.</li></ul></div>`,
+          expMasterTitle: "Master - Cours et spécialisation",
+          expMasterDocTitle: "Master MI1 Data & Finance (Double diplôme)",
+          expMasterBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résumé</h2><p>Double diplôme Data et Finance orienté analyse, SQL, ML, BI et marketing stratégique.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Établissements</h2><p>Albert School Paris + École des Mines Paris (PSL).</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Cours pertinents</h2><ul><li>Analyse de données et statistiques appliquées</li><li>SQL et modélisation de données</li><li>Fondamentaux du machine learning</li><li>Business intelligence et dashboarding</li><li>Finance d'entreprise et analyse financière</li><li>Marketing stratégique et analyse de marché</li><li>Prise de décision par la donnée</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résultat</h2><p>Un pont solide entre analyse quantitative, stratégie business et support à la décision.</p></div>`,
+          expBachelorTitle: "Bachelor - Cours et socle",
+          expBachelorDocTitle: "Bachelor en Business Administration",
+          expBachelorBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résumé</h2><p>Base solide en administration des affaires, stratégie, opérations et coordination de projet.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Socle académique</h2><p>Ce diplôme a construit ma base managériale et opérationnelle avant la spécialisation data et automatisation.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Cours pertinents</h2><ul><li>Principes de management</li><li>Fondamentaux du marketing</li><li>Stratégie d'entreprise</li><li>Gestion des opérations</li><li>Gestion de projet</li><li>Comptabilité et management financier</li><li>Comportement organisationnel et communication</li><li>Droit des affaires et environnement de l'entreprise</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Apport aujourd'hui</h2><p>Cette base me donne une lecture business structurée pour prioriser impact, parties prenantes et qualité d'exécution.</p></div>`,
+          expOpsTitle: "Support, marketing et opérations client",
+          expOpsDocTitle: "Expérience opérations transverse",
+          expOpsBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résumé</h2><p>Expérience transverse en support, communication marketing et opérations client.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Responsabilités</h2><ul><li>Support technique et résolution d'incidents en contexte client.</li><li>Communication marketing et contenu multilingue.</li><li>Suivi opérationnel de processus clients B2B et B2C.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Valeur professionnelle</h2><p>Ces expériences ont renforcé mon adaptabilité, la qualité de service et la coordination de bout en bout.</p></div>`,
+          expTechTitle: "Edge technique + communication",
+          expTechDocTitle: "Stack technique et communication",
+          expTechBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Résumé</h2><p>SQL, Python, outils IA, Microsoft 365, Google Workspace et exécution de projets en Agile.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Compétences techniques</h2><ul><li>Python, SQL et Excel pour analyse et automatisation.</li><li>Analytics et reporting pour le pilotage business.</li><li>Mise en œuvre Google Workspace orientée delivery.</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Compétences communication</h2><ul><li>Rédaction de présentations exécutives et storytelling slide.</li><li>Communication claire avec les parties prenantes en contexte multilingue.</li><li>Traduction du technique vers la décision business.</li></ul></div>`,
+          aboutProfileTitle: "À propos - Profil détaillé",
+          aboutProfileDocTitle: "Profil professionnel",
+          aboutProfileBody: `<div class="panel"><p>Freelance tunisienne basée à Paris, spécialisée dans les plateformes d'apprentissage, les systèmes d'automatisation et les assets de storytelling exécutif.</p><p>Mon approche combine vitesse, structure et précision: je comprends rapidement l'objectif, je cartographie le workflow et je livre des outputs premium alignés aux contraintes business.</p></div><div class="modal-card-grid"><article class="modal-card"><h3>Compétences et stack de delivery</h3><ul><li>SQL, Python et outils IA pour analyse et productivité</li><li>Excel, Word et toute la suite Microsoft 365</li><li>Google Workspace et Google Sites pour collaboration et delivery LMS</li><li>Decks exécutifs, reporting et storytelling business</li></ul></article><article class="modal-card"><h3>Capacités projet et Agile</h3><ul><li>Gestion de projet: planification, priorisation et suivi</li><li>Approche Agile avec delivery itératif et boucles de feedback rapides</li><li>Coordination transverse avec jalons clairs et ownership</li></ul></article><article class="modal-card"><h3>Langues et collaboration</h3><ul><li>Français C2, Anglais C2, Arabe C2, Allemand B2</li><li>Aisance en environnements clients et équipes multilingues</li><li>Communication claire du niveau technique au niveau exécutif</li></ul></article><article class="modal-card"><h3>Apprentissage continu</h3><ul><li>Montée en compétence continue via projets concrets data et automation</li><li>Usage de workflows IA-assistés pour accélérer un delivery de qualité</li><li>Forte adaptabilité aux nouveaux outils, contextes et enjeux business</li></ul></article></div>`,
+          aboutSkillsTitle: "Compétences - Version détaillée",
+          aboutSkillsDocTitle: "Compétences - Delivery de bout en bout",
+          aboutSkillsBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Stack de build</h2><ul><li>Architecture Google Sites et structures d'apprentissage orientées UX</li><li>Automatisation Apps Script pour formulaires, progression, certificats et reporting</li><li>Python/SQL/Excel pour analyse et préparation de données</li><li>Design de decks exécutifs et écriture narrative</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Principe de travail</h2><p>Je relie stratégie et exécution dans un même workflow pour transformer les idées en systèmes livrés.</p></div>`,
+          aboutLanguagesTitle: "Langues - Version détaillée",
+          aboutLanguagesDocTitle: "Capacité multilingue",
+          aboutLanguagesBody: `<div class="panel"><ul><li>Français: C2</li><li>Anglais: C2</li><li>Arabe: C2</li><li>Allemand: B2</li></ul><p>Je facilite communication, contenu et delivery entre équipes multilingues et parties prenantes internationales.</p></div>`,
+          aboutEducationTitle: "Formation et certifications - Version détaillée",
+          aboutEducationDocTitle: "Formation, cours et apprentissage continu",
+          aboutEducationBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Bachelor en Business Administration</h2><ul><li>Management, opérations, finance, marketing et coordination de projet</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Master Data & Finance</h2><ul><li>Analyse de données, SQL, machine learning, BI et marketing stratégique</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Apprentissage continu</h2><p>Pratique continue sur l'automatisation Apps Script, les outils analytics et les workflows de production assistés par IA.</p></div>`,
+          aboutWorkstyleTitle: "Manière de travailler - Version détaillée",
+          aboutWorkstyleDocTitle: "Comment je travaille",
+          aboutWorkstyleBody: `<div class="panel"><ul><li>Calme et fiable sous pression</li><li>Apprentissage rapide de nouveaux domaines et outils</li><li>Sens du détail avec logique de contrôle qualité</li><li>Capacité à challenger les briefs pour améliorer le résultat</li></ul><p>Je privilégie des deadlines claires, une communication transparente et des solutions pratiques qui passent à l'échelle.</p></div>`,
+          skillPlatformTitle: "Design LMS - Version détaillée",
+          skillPlatformDocTitle: "Design de plateformes d'apprentissage",
+          skillPlatformBody: `<div class="panel"><p>Je conçois des parcours LMS structurés avec une architecture claire, des templates de pages et une navigation pratique pour améliorer l'adoption et la complétion.</p></div>`,
+          skillAutomationTitle: "Automatisation - Version détaillée",
+          skillAutomationDocTitle: "Automatisation Apps Script",
+          skillAutomationBody: `<div class="panel"><p>Je construis des workflows fiables sur Forms, Sheets, Slides, Drive et Gmail, avec tracking, journalisation et logique maintenable prête à être transmise.</p></div>`,
+          skillStoryTitle: "Storytelling business - Version détaillée",
+          skillStoryDocTitle: "Communication exécutive",
+          skillStoryBody: `<div class="panel"><p>Je transforme l'analyse en narratifs exécutifs avec storyline claire, messages concis et hiérarchie visuelle orientée décision.</p></div>`,
+          skillExecutionTitle: "Exécution - Version détaillée",
+          skillExecutionDocTitle: "Modèle de delivery",
+          skillExecutionBody: `<div class="panel"><p>Je combine rapidité d'exécution et alignement transverse: jalons clairs, boucles de feedback rapides et outputs premium prêts pour la production.</p></div>`,
           embeddedPdf: "",
           p1PreviewTitle: "Google Sites LMS (Aperçu de la plateforme)",
           p1PreviewDocTitle: "Google Sites LMS (Vue d'ensemble)",
-          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Structure de la plateforme</h2><p>Le LMS est conçu en 4 niveaux sur Google Sites pour la formation en category management.</p><div class="grid"><div><div class="chip">Accueil</div><p style="font-size:13px">Page d'entrée avec identité et CTA</p></div><div><div class="chip">Parcours</div><p style="font-size:13px">Catalogue des parcours</p></div><div><div class="chip">Modules</div><p style="font-size:13px">Pages modules et ressources par parcours</p></div><div><div class="chip">Évaluations</div><p style="font-size:13px">Quiz et missions adaptatives</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Captures du site</h2><div class="grid"><div><img src="assets/media/site-home.png" alt="Accueil Google Sites"><p style="font-size:13px">Page d'accueil</p></div><div><img src="assets/media/site-parcours.png" alt="Parcours Google Sites"><p style="font-size:13px">Catalogue des parcours</p></div><div><img src="assets/media/site-p01-abg.png" alt="Page ABG"><p style="font-size:13px">Page ABG</p></div><div><img src="assets/media/site-p02-assortimpact.png" alt="Page Assort impact"><p style="font-size:13px">Page Assort'impact</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Store Adaptor</h2><img src="assets/media/site-p03-store-adaptor.png" alt="Page Store Adaptor"></div>`,
+          p1PreviewBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Structure de la plateforme</h2><p>Le LMS est conçu en 4 niveaux sur Google Sites pour la formation en category management.</p><div class="grid"><div><div class="chip">Niveau 1</div><p style="font-size:13px">Entrée principale et navigation</p></div><div><div class="chip">Niveau 2</div><p style="font-size:13px">Catalogue des parcours</p></div><div><div class="chip">Niveau 3</div><p style="font-size:13px">Pages modules et ressources</p></div><div><div class="chip">Niveau 4</div><p style="font-size:13px">Évaluations et missions</p></div></div></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Captures du site</h2><div class="grid"><div><img src="assets/media/site-parcours-blur.png" alt="Parcours Google Sites"><p style="font-size:13px">Catalogue des parcours</p></div><div><img src="assets/media/site-p01-abg-blur.png" alt="Page ABG"><p style="font-size:13px">Page module</p></div><div><img src="assets/media/site-p02-assortimpact-blur.png" alt="Page Assort impact"><p style="font-size:13px">Page module</p></div><div><img src="assets/media/site-p03-storeadaptor-blur.png" alt="Page Store Adaptor"><p style="font-size:13px">Page Store Adaptor</p></div></div></div>`,
           p1ExplainerTitle: "Google Sites LMS (Étude de cas)",
           p1ExplainerDocTitle: "Google Sites LMS (Plateforme Carrefour Learning)",
           p1ExplainerBody: `<div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Contexte</h2><p>Le parcours de formation interne était fragmenté. L'objectif était de centraliser l'apprentissage dans un LMS premium autoportant, uniquement avec Google Workspace.</p></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Livrables</h2><ul><li>Architecture 4 niveaux (Accueil, Parcours, Modules, Ressources)</li><li>Templates HTML/CSS personnalisés intégrés à Google Sites</li><li>Pages de cas d'usage métier et parcours pratique</li><li>Structure réutilisable pour déployer de nouveaux parcours</li></ul></div><div class="panel"><h2 style="font-size:18px;margin:0 0 8px">Impact</h2><ul><li>Onboarding plus rapide et navigation claire</li><li>Aucune stack externe nécessaire</li><li>Système scalable et maintenable</li></ul></div>`,
@@ -1419,6 +1811,90 @@
         modalFrame.style.display = "block";
         modalFrame.src = "about:blank";
         modalFrame.srcdoc = makeDoc(copy.p6ExplainerDocTitle, copy.p6ExplainerBody);
+        modalNote.textContent = "";
+      } else if (kind === "exp-carrefour") {
+        modalTitle.textContent = copy.expCarrefourTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.expCarrefourDocTitle, copy.expCarrefourBody);
+        modalNote.textContent = "";
+      } else if (kind === "exp-master") {
+        modalTitle.textContent = copy.expMasterTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.expMasterDocTitle, copy.expMasterBody);
+        modalNote.textContent = "";
+      } else if (kind === "exp-bachelor") {
+        modalTitle.textContent = copy.expBachelorTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.expBachelorDocTitle, copy.expBachelorBody);
+        modalNote.textContent = "";
+      } else if (kind === "exp-ops") {
+        modalTitle.textContent = copy.expOpsTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.expOpsDocTitle, copy.expOpsBody);
+        modalNote.textContent = "";
+      } else if (kind === "exp-tech") {
+        modalTitle.textContent = copy.expTechTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.expTechDocTitle, copy.expTechBody);
+        modalNote.textContent = "";
+      } else if (kind === "about-profile") {
+        modalTitle.textContent = copy.aboutProfileTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.aboutProfileDocTitle, copy.aboutProfileBody);
+        modalNote.textContent = "";
+      } else if (kind === "about-skills") {
+        modalTitle.textContent = copy.aboutSkillsTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.aboutSkillsDocTitle, copy.aboutSkillsBody);
+        modalNote.textContent = "";
+      } else if (kind === "about-languages") {
+        modalTitle.textContent = copy.aboutLanguagesTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.aboutLanguagesDocTitle, copy.aboutLanguagesBody);
+        modalNote.textContent = "";
+      } else if (kind === "about-education") {
+        modalTitle.textContent = copy.aboutEducationTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.aboutEducationDocTitle, copy.aboutEducationBody);
+        modalNote.textContent = "";
+      } else if (kind === "about-workstyle") {
+        modalTitle.textContent = copy.aboutWorkstyleTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.aboutWorkstyleDocTitle, copy.aboutWorkstyleBody);
+        modalNote.textContent = "";
+      } else if (kind === "skill-platform") {
+        modalTitle.textContent = copy.skillPlatformTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.skillPlatformDocTitle, copy.skillPlatformBody);
+        modalNote.textContent = "";
+      } else if (kind === "skill-automation") {
+        modalTitle.textContent = copy.skillAutomationTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.skillAutomationDocTitle, copy.skillAutomationBody);
+        modalNote.textContent = "";
+      } else if (kind === "skill-story") {
+        modalTitle.textContent = copy.skillStoryTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.skillStoryDocTitle, copy.skillStoryBody);
+        modalNote.textContent = "";
+      } else if (kind === "skill-execution") {
+        modalTitle.textContent = copy.skillExecutionTitle;
+        modalFrame.style.display = "block";
+        modalFrame.src = "about:blank";
+        modalFrame.srcdoc = makeDoc(copy.skillExecutionDocTitle, copy.skillExecutionBody);
         modalNote.textContent = "";
       }
       modal.classList.add("open");
